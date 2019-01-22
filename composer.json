@@ -1,0 +1,68 @@
+{
+  "name": "crcms/permission",
+  "description": "The Permission Packages .",
+  "keywords": [
+    "permission",
+    "laravel",
+    "role",
+    "field"
+  ],
+  "authors": [
+    {
+      "name": "doming",
+      "email": "1396002924@qq.com"
+    }
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.2.4",
+    "crcms/foundation": "dev-master",
+    "crcms/repository": "*",
+    "illuminate/routing": "^5.7",
+    "illuminate/support": "^5.7"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "classmap": [
+    ],
+    "psr-4": {
+      "CrCms\\Permission\\": "src/"
+    },
+    "files": [
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CrCms\\Permission\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "CrCms\\Permission\\PermissionServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.2.4"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.laravel-china.org"
+    }
+  }
+}
