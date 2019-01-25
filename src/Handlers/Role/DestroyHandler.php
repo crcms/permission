@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 10:54
- */
 
 namespace CrCms\Permission\Handlers\Role;
 
@@ -21,7 +15,7 @@ class DestroyHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): int
     {
         /* @var RoleRepository $repository */
-        $repository = app(RoleRepository::class);
+        $repository = $this->app->make(RoleRepository::class);
 
         return $repository->delete($provider->get('role'));
     }

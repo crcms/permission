@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/25
- * Time: 11:09
- */
 
 namespace CrCms\Permission\Handlers\Field;
 
@@ -22,7 +16,7 @@ class UpdateHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): FieldModel
     {
         /* @var FieldRepository $repository */
-        $repository = app(FieldRepository::class);
+        $repository = $this->app->make(FieldRepository::class);
 
         //整合数据
         $input = $provider->all();

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 9:44
- */
 
 namespace CrCms\Permission\Handlers\Menu;
 
@@ -22,7 +16,7 @@ class UpdateHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): MenuModel
     {
         /* @var MenuRepository $repository */
-        $repository = app(MenuRepository::class);
+        $repository = $this->app->make(MenuRepository::class);
 
         //整合数据
         $input = $provider->all();

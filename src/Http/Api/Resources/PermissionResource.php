@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 11:47
- */
 
 namespace CrCms\Permission\Http\Api\Resources;
 
@@ -36,8 +30,8 @@ class PermissionResource extends Resource
             'status' => $this->status ?? 1,
             'status_text' => e(CommonConstant::STATUS_LIST[$this->status] ?? ''),
             'remark' => e($this->remark ?? ''),
-            'created_at' => date('Y-m-d H:i:s',$this->created_at),
-            'updated_at' => date('Y-m-d H:i:s',$this->updated_at),
+            'created_at' => $this->created_at->toDateTimeString() ?? '',
+            'updated_at' => $this->updated_at->toDateTimeString ?? '',
         ];
     }
 

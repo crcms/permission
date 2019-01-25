@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 17:42
- */
 
 namespace CrCms\Permission\Http\Api\Resources;
 
@@ -36,8 +30,8 @@ class RoleResource extends Resource
             'super' => $this->super ?? 0,
             'super_text' => e(CommonConstant::SUPER_LIST[$this->super] ?? ''),
             'remark' => $this->remark ?? '',
-            'created_at' => date('Y-m-d H:i:s', $this->created_at),
-            'updated_at' => date('Y-m-d H:i:s', $this->updated_at),
+            'created_at' => $this->created_at->toDateTimeString() ?? '',
+            'updated_at' => $this->updated_at->toDateTimeString() ?? '',
         ];
     }
 

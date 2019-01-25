@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 11:34
- */
 
 namespace CrCms\Permission\Handlers\Permission;
 
@@ -21,7 +15,7 @@ class DestroyHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): int
     {
         /* @var PermissionRepository $repository */
-        $repository = app(PermissionRepository::class);
+        $repository = $this->app->make(PermissionRepository::class);
 
         return $repository->delete($provider->get('permission'));
     }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 8:56
- */
 
 namespace CrCms\Permission\Http\Api\Resources;
 
@@ -38,8 +32,8 @@ class MenuResource extends Resource
             'remark' => e($this->remark ?? ''),
             'sort' => $this->sort ?? 0,
             'pid' => $this->pid ?? 0,
-            'created_at' => date('Y-m-d H:i:s',$this->created_at),
-            'updated_at' => date('Y-m-d H:i:s',$this->updated_at),
+            'created_at' => $this->created_at->toDateTimeString() ?? '',
+            'updated_at' => $this->updated_at->toDateTimeString() ?? '',
         ];
     }
 

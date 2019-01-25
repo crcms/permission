@@ -24,7 +24,7 @@ class CreateMenusTable extends Migration
             $table->integer('pid')->default(0)->comment('父id');
             $table->bigInteger('created_at')->nullable()->comment('创建时间');
             $table->bigInteger('updated_at')->nullable()->comment('更新时间');
-            $table->softDeletes()->comment('删除时间');
+            $table->bigInteger('deleted_at')->nullable(true)->comment('删除时间');
 
         });
     }

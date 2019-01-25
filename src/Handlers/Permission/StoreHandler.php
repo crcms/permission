@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 11:38
- */
 
 namespace CrCms\Permission\Handlers\Permission;
 
@@ -22,7 +16,7 @@ class StoreHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): PermissionModel
     {
         /* @var PermissionRepository $repository */
-        $repository = app(PermissionRepository::class);
+        $repository = $this->app->make(PermissionRepository::class);
 
         //整合数据
         $input = $provider->all();

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/25
- * Time: 11:12
- */
 
 namespace CrCms\Permission\Handlers\Field;
 
@@ -22,7 +16,7 @@ class ShowHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): FieldModel
     {
         /* @var FieldRepository $repository */
-        $repository = app(FieldRepository::class);
+        $repository = $this->app->make(FieldRepository::class);
 
         return $repository->single($provider->all());
     }

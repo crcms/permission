@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 15:52
- */
 
 namespace CrCms\Permission\Http\Requests\Permission;
 

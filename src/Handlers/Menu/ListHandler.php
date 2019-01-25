@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 9:58
- */
 
 namespace CrCms\Permission\Handlers\Menu;
 

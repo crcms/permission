@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 11:11
- */
 
 namespace CrCms\Permission\Handlers\Menu;
 
@@ -21,7 +15,7 @@ class SearchHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): array
     {
         /* @var MenuRepository $repository */
-        $repository = app(MenuRepository::class);
+        $repository = $this->app->make(MenuRepository::class);
 
         return $repository->getTreeList($provider->all());
     }

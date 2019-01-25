@@ -20,7 +20,7 @@ class CreateFieldsTable extends Migration
             $table->string('name', 128)->nullable()->comment('字段名');
             $table->bigInteger('created_at')->nullable()->comment('创建时间');
             $table->bigInteger('updated_at')->nullable()->comment('更新时间');
-            $table->softDeletes()->comment('删除时间');
+            $table->bigInteger('deleted_at')->nullable(true)->comment('删除时间');
         });
     }
 

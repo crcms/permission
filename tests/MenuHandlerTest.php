@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 16:33
- */
 
 namespace CrCms\Permission\Tests;
 

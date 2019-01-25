@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 9:49
- */
 
 namespace CrCms\Permission\Handlers\Menu;
 
@@ -22,7 +16,7 @@ class DestroyHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): int
     {
         /* @var MenuRepository $repository */
-        $repository = app(MenuRepository::class);
+        $repository = $this->app->make(MenuRepository::class);
 
         //判断是否含有子集数据
         $models = $repository->hasChildren($provider->get('menu'));

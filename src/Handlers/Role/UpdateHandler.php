@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 10:45
- */
 
 namespace CrCms\Permission\Handlers\Role;
 
@@ -22,7 +16,7 @@ class UpdateHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): RoleModel
     {
         /* @var RoleRepository $repository */
-        $repository = app(RoleRepository::class);
+        $repository = $this->app->make(RoleRepository::class);
 
         //整合数据
         $id = $provider->get('role');

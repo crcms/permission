@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/22
- * Time: 14:09
- */
 
 namespace CrCms\Permission\Models;
 
@@ -19,14 +13,9 @@ class RoleModel extends Model
     protected $table = 'roles';
 
     /**
-     * @var null
-     */
-    protected $dateFormat = null;
-
-    /**
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * @return BelongsToMany

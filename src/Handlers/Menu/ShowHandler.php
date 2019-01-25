@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/23
- * Time: 9:30
- */
 
 namespace CrCms\Permission\Handlers\Menu;
 
@@ -22,7 +16,7 @@ class ShowHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): MenuModel
     {
         /* @var MenuRepository $repository */
-        $repository = app(MenuRepository::class);
+        $repository = $this->app->make(MenuRepository::class);
 
         return $repository->single($provider->all());
     }

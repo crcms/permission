@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/25
- * Time: 11:16
- */
 
 namespace CrCms\Permission\Handlers\Field;
 
@@ -21,7 +15,7 @@ class DestroyHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): int
     {
         /* @var FieldRepository $repository */
-        $repository = app(FieldRepository::class);
+        $repository = $this->app->make(FieldRepository::class);
 
         return $repository->delete($provider->get('field'));
     }

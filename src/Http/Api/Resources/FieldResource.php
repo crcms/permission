@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/25
- * Time: 10:10
- */
 
 namespace CrCms\Permission\Http\Api\Resources;
 
@@ -32,8 +26,8 @@ class FieldResource extends Resource
             'table_name' => e($this->table_name ?? ''),
             'field' => e($this->field ?? ''),
             'name' => e($this->name ?? ''),
-            'created_at' => date('Y-m-d H:i:s',$this->created_at),
-            'updated_at' => date('Y-m-d H:i:s',$this->updated_at),
+            'created_at' => $this->created_at->toDateTimeString() ?? '',
+            'updated_at' => $this->updated_at->toDateTimeString() ?? '',
         ];
     }
 

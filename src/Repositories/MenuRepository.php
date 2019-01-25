@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/22
- * Time: 14:32
- */
 
 namespace CrCms\Permission\Repositories;
 

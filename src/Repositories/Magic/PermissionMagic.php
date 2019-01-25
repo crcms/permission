@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/24
- * Time: 11:25
- */
 
 namespace CrCms\Permission\Repositories\Magic;
 
