@@ -8,6 +8,7 @@ Route::prefix('api')->group(function () {
         //菜单
         Route::apiResource('menus', 'MenuController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
+
         //菜单搜索接口
         Route::get('menu-lists', 'MenuController@getList')->name('menu-lists.get');
 

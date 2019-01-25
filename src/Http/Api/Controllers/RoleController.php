@@ -15,11 +15,11 @@ use CrCms\Permission\Handlers\Role\ShowHandler;
 use CrCms\Permission\Handlers\Role\StoreHandler;
 use CrCms\Permission\Handlers\Role\UpdateHandler;
 use CrCms\Permission\Http\Api\Resources\RoleResource;
-use CrCms\Permission\Http\Requests\Role\RoleFieldsUpdateRequest;
-use CrCms\Permission\Http\Requests\Role\RoleMenusUpdateRequest;
-use CrCms\Permission\Http\Requests\Role\RolePermissionUpdateRequest;
-use CrCms\Permission\Http\Requests\Role\StoreRequest;
-use CrCms\Permission\Http\Requests\Role\UpdateRequest;
+use CrCms\Permission\Http\DataProviders\Role\RoleFieldsUpdateDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\RoleMenusUpdateDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\RolePermissionUpdateDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\StoreDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\UpdateDataProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
@@ -55,11 +55,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param StoreRequest $request
+     * @param StoreDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function store(StoreRequest $request)
+    public function store(StoreDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
@@ -68,11 +67,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param UpdateRequest $request
+     * @param UpdateDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
@@ -93,11 +91,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param RolePermissionUpdateRequest $request
+     * @param RolePermissionUpdateDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function rolePermissionUpdate(RolePermissionUpdateRequest $request)
+    public function rolePermissionUpdate(RolePermissionUpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(RolePermissionUpdateHandler::class)->handle($request),
@@ -106,11 +103,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param RoleMenusUpdateRequest $request
+     * @param RoleMenusUpdateDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function roleMenusUpdate(RoleMenusUpdateRequest $request)
+    public function roleMenusUpdate(RoleMenusUpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(RoleMenusUpdateHandler::class)->handle($request),
@@ -119,11 +115,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param RoleFieldsUpdateRequest $request
+     * @param RoleFieldsUpdateDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function roleFieldsUpdate(RoleFieldsUpdateRequest $request)
+    public function roleFieldsUpdate(RoleFieldsUpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(RoleFieldsUpdateHandler::class)->handle($request),

@@ -6,7 +6,7 @@ use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
 use Illuminate\Validation\Rule;
 
-class UpdateRequest extends AbstractValidateDataProvider
+class UpdateDataProvider extends AbstractValidateDataProvider
 {
     /**
      * @return array

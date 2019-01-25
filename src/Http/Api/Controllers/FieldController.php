@@ -11,8 +11,8 @@ use CrCms\Permission\Handlers\Field\ShowHandler;
 use CrCms\Permission\Handlers\Field\StoreHandler;
 use CrCms\Permission\Handlers\Field\UpdateHandler;
 use CrCms\Permission\Http\Api\Resources\FieldResource;
-use CrCms\Permission\Http\Requests\Field\StoreRequest;
-use CrCms\Permission\Http\Requests\Field\UpdateRequest;
+use CrCms\Permission\Http\DataProviders\Field\StoreDataProvider;
+use CrCms\Permission\Http\DataProviders\Field\UpdateDataProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
@@ -50,11 +50,10 @@ class FieldController extends Controller
     }
 
     /**
-     * @param StoreRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @param StoreDataProvider $request
+     * @return JsonResponse
      */
-    public function store(StoreRequest $request)
+    public function store(StoreDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
@@ -63,11 +62,10 @@ class FieldController extends Controller
     }
 
     /**
-     * @param UpdateRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @param UpdateDataProvider $request
+     * @return JsonResponse
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),

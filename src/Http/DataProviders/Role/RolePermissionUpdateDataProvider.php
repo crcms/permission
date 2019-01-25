@@ -4,7 +4,7 @@ namespace CrCms\Permission\Http\DataProviders\Role;
 
 use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 
-class RolePermissionUpdateRequest extends AbstractValidateDataProvider
+class RolePermissionUpdateDataProvider extends AbstractValidateDataProvider
 {
     /**
      * @return array

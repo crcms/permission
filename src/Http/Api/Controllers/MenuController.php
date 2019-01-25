@@ -12,8 +12,8 @@ use CrCms\Permission\Handlers\Menu\ShowHandler;
 use CrCms\Permission\Handlers\Menu\StoreHandler;
 use CrCms\Permission\Handlers\Menu\UpdateHandler;
 use CrCms\Permission\Http\Api\Resources\MenuResource;
-use CrCms\Permission\Http\Requests\Menu\StoreRequest;
-use CrCms\Permission\Http\Requests\Menu\UpdateRequest;
+use CrCms\Permission\Http\DataProviders\Menu\StoreDataProvider;
+use CrCms\Permission\Http\DataProviders\Menu\UpdateDataProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
@@ -54,11 +54,10 @@ class MenuController extends Controller
     }
 
     /**
-     * @param StoreRequest $request
+     * @param StoreDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function store(StoreRequest $request)
+    public function store(StoreDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
@@ -67,11 +66,10 @@ class MenuController extends Controller
     }
 
     /**
-     * @param UpdateRequest $request
+     * @param UpdateDataProvider $request
      * @return JsonResponse
-     * @throws \Exception
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),

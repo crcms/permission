@@ -11,8 +11,9 @@ use CrCms\Permission\Handlers\Permission\ShowHandler;
 use CrCms\Permission\Handlers\Permission\StoreHandler;
 use CrCms\Permission\Handlers\Permission\UpdateHandler;
 use CrCms\Permission\Http\Api\Resources\PermissionResource;
-use CrCms\Permission\Http\Requests\Permission\StoreRequest;
-use CrCms\Permission\Http\Requests\Permission\UpdateRequest;
+use CrCms\Permission\Http\DataProviders\Permission\StoreDataProvider;
+use CrCms\Permission\Http\DataProviders\Permission\UpdateDataProvider;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
 class PermissionController extends Controller
@@ -24,7 +25,7 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function index(DataProviderContract $provider)
+    public function index(DataProviderContract $provider): JsonResponse
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
@@ -35,8 +36,7 @@ class PermissionController extends Controller
 
     /**
      * @param DataProviderContract $provider
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return JsonResponse
      */
     public function show(DataProviderContract $provider)
     {
@@ -47,11 +47,10 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param StoreRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @param StoreDataProvider $request
+     * @return JsonResponse
      */
-    public function store(StoreRequest $request)
+    public function store(StoreDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
@@ -60,11 +59,10 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param UpdateRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @param UpdateDataProvider $request
+     * @return JsonResponse
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateDataProvider $request)
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
