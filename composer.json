@@ -9,8 +9,8 @@
   ],
   "authors": [
     {
-      "name": "doming",
-      "email": "1396002924@qq.com"
+      "name": "simon",
+      "email": "simon@crcms.cn"
     }
   ],
   "type": "library",
@@ -18,11 +18,18 @@
   "require": {
     "php": "^7.2.4",
     "crcms/foundation": "dev-master",
-    "crcms/repository": "*",
-    "illuminate/routing": "^5.7",
-    "illuminate/support": "^5.7"
+    "crcms/repository": "^2.1",
+    "illuminate/container": "5.7.*",
+    "illuminate/config": "5.7.*",
+    "illuminate/events": "5.7.*",
+    "illuminate/support": "5.7.*",
+    "illuminate/validation": "5.7.*",
+    "illuminate/database": "5.7.*",
+    "illuminate/console": "5.7.*",
+    "illuminate/routing": "5.7.*"
   },
   "require-dev": {
+    "symfony/var-dumper": "^4.1",
     "mockery/mockery": "^1.0",
     "phpunit/phpunit": "^7.0"
   },
@@ -58,11 +65,5 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "repositories": {
-    "packagist": {
-      "type": "composer",
-      "url": "https://packagist.laravel-china.org"
-    }
-  }
+  "prefer-stable": true
 }

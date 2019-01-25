@@ -2,6 +2,7 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Foundation\Services\ResponseTrait;
 
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
@@ -24,7 +25,7 @@ use Illuminate\Routing\Controller;
 
 class RoleController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait, InstanceConcern;
 
     /**
      * @param DataProviderContract $provider
@@ -34,21 +35,21 @@ class RoleController extends Controller
     public function index(DataProviderContract $provider): JsonResponse
     {
         return $this->response()->paginator(
-            app(ListHandler::class)->handle($provider),
+            $this->app->make(ListHandler::class)->handle($provider),
             RoleResource::class,
             ['only' => ['id', 'name', 'status_text', 'super_text', 'created_at']]
         );
     }
 
     /**
-     * @param DataProvider $provider
+     * @param DataProviderContract $provider
      * @return JsonResponse
      * @throws \Exception
      */
     public function show(DataProviderContract $provider)
     {
         return $this->response()->resource(
-            app(ShowHandler::class)->handle($provider),
+            $this->app->make(ShowHandler::class)->handle($provider),
             RoleResource::class
         );
     }
@@ -61,7 +62,7 @@ class RoleController extends Controller
     public function store(StoreRequest $request)
     {
         return $this->response()->resource(
-            app(StoreHandler::class)->handle($request),
+            $this->app->make(StoreHandler::class)->handle($request),
             RoleResource::class
         );
     }
@@ -74,19 +75,19 @@ class RoleController extends Controller
     public function update(UpdateRequest $request)
     {
         return $this->response()->resource(
-            app(UpdateHandler::class)->handle($request),
+            $this->app->make(UpdateHandler::class)->handle($request),
             RoleResource::class
         );
     }
 
     /**
-     * @param DataProvider $provider
+     * @param DataProviderContract $provider
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
     public function destroy(DataProviderContract $provider)
     {
-        app(DestroyHandler::class)->handle($provider);
+        $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
     }
@@ -99,7 +100,7 @@ class RoleController extends Controller
     public function rolePermissionUpdate(RolePermissionUpdateRequest $request)
     {
         return $this->response()->resource(
-            app(RolePermissionUpdateHandler::class)->handle($request),
+            $this->app->make(RolePermissionUpdateHandler::class)->handle($request),
             RoleResource::class
         );
     }
@@ -112,7 +113,7 @@ class RoleController extends Controller
     public function roleMenusUpdate(RoleMenusUpdateRequest $request)
     {
         return $this->response()->resource(
-            app(RoleMenusUpdateHandler::class)->handle($request),
+            $this->app->make(RoleMenusUpdateHandler::class)->handle($request),
             RoleResource::class
         );
     }
@@ -125,7 +126,7 @@ class RoleController extends Controller
     public function roleFieldsUpdate(RoleFieldsUpdateRequest $request)
     {
         return $this->response()->resource(
-            app(RoleFieldsUpdateHandler::class)->handle($request),
+            $this->app->make(RoleFieldsUpdateHandler::class)->handle($request),
             RoleResource::class
         );
     }

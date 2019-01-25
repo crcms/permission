@@ -2,6 +2,7 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Menu\DestroyHandler;
@@ -22,7 +23,7 @@ use Illuminate\Routing\Controller;
  */
 class MenuController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait, InstanceConcern;
 
     /**
      * @param DataProviderContract $provider
@@ -35,7 +36,7 @@ class MenuController extends Controller
         $provider['filter'] = $filter;
 
         return $this->response()->data(
-            app(ListHandler::class)->handle($provider)
+            $this->app->make(ListHandler::class)->handle($provider)
         );
     }
 
@@ -47,7 +48,7 @@ class MenuController extends Controller
     public function show(DataProviderContract $provider)
     {
         return $this->response()->resource(
-            app(ShowHandler::class)->handle($provider),
+            $this->app->make(ShowHandler::class)->handle($provider),
             MenuResource::class
         );
     }
@@ -60,7 +61,7 @@ class MenuController extends Controller
     public function store(StoreRequest $request)
     {
         return $this->response()->resource(
-            app(StoreHandler::class)->handle($request),
+            $this->app->make(StoreHandler::class)->handle($request),
             MenuResource::class
         );
     }
@@ -73,7 +74,7 @@ class MenuController extends Controller
     public function update(UpdateRequest $request)
     {
         return $this->response()->resource(
-            app(UpdateHandler::class)->handle($request),
+            $this->app->make(UpdateHandler::class)->handle($request),
             MenuResource::class
         );
     }
@@ -85,7 +86,7 @@ class MenuController extends Controller
      */
     public function destroy(DataProviderContract $provider)
     {
-        app(DestroyHandler::class)->handle($provider);
+        $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
     }
@@ -101,7 +102,7 @@ class MenuController extends Controller
         $provider['filter'] = $filter;
 
         return $this->response()->data(
-            app(SearchHandler::class)->handle($provider)
+            $this->app->make(SearchHandler::class)->handle($provider)
         );
     }
 }

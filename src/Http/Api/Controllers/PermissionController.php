@@ -2,6 +2,7 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Permission\DestroyHandler;
@@ -16,7 +17,7 @@ use Illuminate\Routing\Controller;
 
 class PermissionController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait, InstanceConcern;
 
     /**
      * @param DataProviderContract $provider
@@ -26,7 +27,7 @@ class PermissionController extends Controller
     public function index(DataProviderContract $provider)
     {
         return $this->response()->paginator(
-            app(ListHandler::class)->handle($provider),
+            $this->app->make(ListHandler::class)->handle($provider),
             PermissionResource::class,
             ['only' => ['id', 'title', 'route', 'action', 'status_text', 'created_at']]
         );
@@ -40,7 +41,7 @@ class PermissionController extends Controller
     public function show(DataProviderContract $provider)
     {
         return $this->response()->resource(
-            app(ShowHandler::class)->handle($provider),
+            $this->app->make(ShowHandler::class)->handle($provider),
             PermissionResource::class
         );
     }
@@ -53,7 +54,7 @@ class PermissionController extends Controller
     public function store(StoreRequest $request)
     {
         return $this->response()->resource(
-            app(StoreHandler::class)->handle($request),
+            $this->app->make(StoreHandler::class)->handle($request),
             PermissionResource::class
         );
     }
@@ -66,7 +67,7 @@ class PermissionController extends Controller
     public function update(UpdateRequest $request)
     {
         return $this->response()->resource(
-            app(UpdateHandler::class)->handle($request),
+            $this->app->make(UpdateHandler::class)->handle($request),
             PermissionResource::class
         );
     }
@@ -78,7 +79,7 @@ class PermissionController extends Controller
      */
     public function destroy(DataProviderContract $provider)
     {
-        app(DestroyHandler::class)->handle($provider);
+        $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
     }

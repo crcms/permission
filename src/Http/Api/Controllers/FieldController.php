@@ -2,6 +2,7 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Field\DestroyHandler;
@@ -15,14 +16,21 @@ use CrCms\Permission\Http\Requests\Field\UpdateRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
+/**
+ * Class FieldController
+ */
 class FieldController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait, InstanceConcern;
 
+    /**
+     * @param DataProviderContract $provider
+     * @return JsonResponse
+     */
     public function index(DataProviderContract $provider): JsonResponse
     {
         return $this->response()->paginator(
-            app(ListHandler::class)->handle($provider),
+            $this->app->make(ListHandler::class)->handle($provider),
             FieldResource::class,
             ['only' => ['id', 'field', 'name', 'created_at']]
         );
@@ -36,7 +44,7 @@ class FieldController extends Controller
     public function show(DataProviderContract $provider)
     {
         return $this->response()->resource(
-            app(ShowHandler::class)->handle($provider),
+            $this->app->make(ShowHandler::class)->handle($provider),
             FieldResource::class
         );
     }
@@ -49,7 +57,7 @@ class FieldController extends Controller
     public function store(StoreRequest $request)
     {
         return $this->response()->resource(
-            app(StoreHandler::class)->handle($request),
+            $this->app->make(StoreHandler::class)->handle($request),
             FieldResource::class
         );
     }
@@ -62,7 +70,7 @@ class FieldController extends Controller
     public function update(UpdateRequest $request)
     {
         return $this->response()->resource(
-            app(UpdateHandler::class)->handle($request),
+            $this->app->make(UpdateHandler::class)->handle($request),
             FieldResource::class
         );
     }
@@ -74,7 +82,7 @@ class FieldController extends Controller
      */
     public function destroy(DataProviderContract $provider)
     {
-        app(DestroyHandler::class)->handle($provider);
+        $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
     }
