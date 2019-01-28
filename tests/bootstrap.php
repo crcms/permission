@@ -36,11 +36,11 @@ $app->singleton('config', function () use ($config) {
             'connections' => [
                 'mysql' => [
                     'driver' => 'mysql',
-                    'host' => 'mysql',
+                    'host' => '127.0.0.1',
                     'port' => '3306',
-                    'database' => 'default',
-                    'username' => 'root',
-                    'password' => 'root',
+                    'database' => 'permissions',
+                    'username' => 'homestead',
+                    'password' => 'secret',
                     'charset' => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
                     'prefix' => '',

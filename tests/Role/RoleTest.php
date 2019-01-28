@@ -3,11 +3,18 @@
 namespace CrCms\Permission\Tests\Role;
 
 use CrCms\Foundation\Transporters\DataProvider;
+use CrCms\Permission\Handlers\Role\DestroyHandler;
+use CrCms\Permission\Handlers\Role\ListHandler;
+use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
+use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
+use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
+use CrCms\Permission\Handlers\Role\ShowHandler;
 use CrCms\Permission\Handlers\Role\StoreHandler;
 use CrCms\Permission\Handlers\Role\UpdateHandler;
 use CrCms\Permission\Models\RoleModel;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
 use CrCms\Permission\Tests\ApplicationTrait;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 
@@ -41,6 +48,43 @@ class RoleTest extends TestCase
         return $result;
     }
 
+
+    public function testList()
+    {
+        $handler = new ListHandler();
+
+        $data = [];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+
+        $this->assertObjectHasAttribute('total', $result);
+        $this->assertObjectHasAttribute('perPage', $result);
+        $this->assertObjectHasAttribute('currentPage', $result);
+        $this->assertObjectHasAttribute('lastPage', $result);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testShow(RoleModel $role)
+    {
+        $handler = new ShowHandler();
+
+        $data = [
+            'role' => $role->id,
+        ];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertInstanceOf(RoleModel::class, $result);
+        $this->assertEquals($role->name, $result->name);
+        $this->assertEquals($role->status, $result->status);
+        $this->assertEquals($role->super, $result->super);
+        $this->assertEquals($role->remark, $result->remark);
+    }
+
     /**
      * @depends testStore
      */
@@ -62,5 +106,72 @@ class RoleTest extends TestCase
         $this->assertEquals($data['name'],$result->name);
         $this->assertEquals($data['super'],$result->super);
         $this->assertEquals($data['status'],$result->status);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testRolePermissionUpdate(RoleModel $role)
+    {
+        $handler = new RolePermissionUpdateHandler();
+
+        $data = [
+            'id' => $role->id,
+            'permission' => [1, 2, 3, 4, 5]
+        ];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertInstanceOf(RoleModel::class,$result);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testRoleMenusUpdate(RoleModel $role)
+    {
+        $handler = new RoleMenusUpdateHandler();
+
+        $data = [
+            'id' => $role->id,
+            'menu' => [1, 2, 3, 4],
+        ];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertInstanceOf(RoleModel::class,$result);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testRoleFieldsUpdate(RoleModel $role)
+    {
+        $handler = new RoleFieldsUpdateHandler();
+
+        $data = [
+            'id' => $role->id,
+            'field' => [2, 3, 4],
+        ];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertInstanceOf(RoleModel::class,$result);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testDestroy(RoleModel $role)
+    {
+        $handler = new DestroyHandler();
+
+        $data = [
+            'role' => $role->id
+        ];
+
+        $result = $handler->handle(new DataProvider($data));
+
+        $this->assertEquals(1, $result);
     }
 }

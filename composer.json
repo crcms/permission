@@ -26,7 +26,8 @@
     "illuminate/validation": "5.7.*",
     "illuminate/database": "5.7.*",
     "illuminate/console": "5.7.*",
-    "illuminate/routing": "5.7.*"
+    "illuminate/routing": "5.7.*",
+    "illuminate/pagination": "5.7.*"
   },
   "require-dev": {
     "symfony/var-dumper": "^4.1",
