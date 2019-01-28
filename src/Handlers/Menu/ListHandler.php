@@ -4,8 +4,9 @@ namespace CrCms\Permission\Handlers\Menu;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Http\Api\Resources\MenuResource;
 use CrCms\Permission\Repositories\MenuRepository;
+use CrCms\Permission\Tasks\FilterDataTask;
+use CrCms\Permission\Tasks\FormatTreeTask;
 use Illuminate\Support\Collection;
 
 class ListHandler extends AbstractHandler
@@ -23,30 +24,23 @@ class ListHandler extends AbstractHandler
     /**
      * @param DataProviderContract $provider
      * @param Collection $collect
-     * @param array $filter
      * @return array
      */
     protected function format(DataProviderContract $provider, Collection $collect): array
     {
-        $resources = MenuResource::collection($collect);
+        $temp = $collect->toArray();
 
-        //获取资源的头信息
-        $condition = $resources->collection->first()->condition($provider);
+        //获取过滤的字段
+        $field = $provider->get('filter');
 
-        //获取过滤字段
-        $filter = $provider->get('filter');
-        if (empty($filter)) {
-            $temp = $resources->resolve();
-            $headings = $resources->collection->first()->headings($provider);
-        } else {
-            $temp = $resources->only($filter)->resolve();
-            $tempHeadings = $resources->collection->first()->headings($provider);
-            $headings = collect($tempHeadings)->only($filter)->toArray();
-        }
+        //数据字段过滤
+        $formatTask = $this->app->make(FilterDataTask::class);
+        $format = $formatTask->handle($temp, $field);
 
-        //递归菜单
-        $data = formateTree($temp);
+        //无限极分类
+        $task = $this->app->make(FormatTreeTask::class);
+        $data = $task->handle($format);
 
-        return ['data'=>$data,'headings' => $headings,'condition' => $condition];
+        return $data;
     }
 }
