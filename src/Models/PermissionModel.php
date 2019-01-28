@@ -10,11 +10,6 @@ class PermissionModel extends Model
     use SoftDeletes;
 
     /**
-     * @var null
-     */
-    protected $dateFormat = null;
-
-    /**
      * @var string
      */
     protected $table = 'permissions';
