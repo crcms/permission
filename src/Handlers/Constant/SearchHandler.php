@@ -16,7 +16,9 @@ class SearchHandler extends AbstractHandler
      */
     public function handle(DataProviderContract $provider): array
     {
-        $path = base_path('packages/permission/src/Repositories/Constants');
+        //获取常量的相对路径
+        $path = __DIR__ . '/../../Repositories/Constants';
+
         $files = scandir($path);
 
         $constants = [];
