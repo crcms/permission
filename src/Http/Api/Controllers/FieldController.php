@@ -32,7 +32,7 @@ class FieldController extends Controller
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
             FieldResource::class,
-            ['only' => ['id', 'field', 'name', 'created_at']]
+            ['only' => ['id', 'field_key', 'name', 'created_at']]
         );
     }
 

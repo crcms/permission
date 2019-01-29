@@ -16,7 +16,7 @@ class FieldResource extends Resource
         return [
             'id' => $this->id,
             'table_name' => e($this->table_name ?? ''),
-            'field' => e($this->field ?? ''),
+            'field_key' => e($this->field_key ?? ''),
             'name' => e($this->name ?? ''),
             'created_at' => $this->created_at->toDateTimeString() ?? '',
             'updated_at' => $this->updated_at->toDateTimeString() ?? '',

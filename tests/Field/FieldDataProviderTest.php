@@ -20,7 +20,7 @@ class FieldDataProviderTest extends TestCase
         $trans = $this->getIlluminateArrayTranslator();
         $data = [
             'table_name' => Str::random(10),
-            'field' => Str::random(10),
+            'field_key' => Str::random(10),
             'name' => Str::random(10),
         ];
 
@@ -40,7 +40,7 @@ class FieldDataProviderTest extends TestCase
         $trans = $this->getIlluminateArrayTranslator();
         $data = [
             'table_name' => Str::random(10),
-            'field' => mt_rand(1, 100),
+            'field_key' => mt_rand(1, 100),
             'name' => Str::random(288),
         ];
 

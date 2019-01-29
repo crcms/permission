@@ -24,12 +24,12 @@ class FieldMagic extends AbstractMagic implements QueryMagic
      * 搜索字段
      *
      * @param QueryRelate $query
-     * @param string $field
+     * @param string $fieldKey
      * @return QueryRelate
      */
-    public function byField(QueryRelate $query, string $field): QueryRelate
+    public function byField(QueryRelate $query, string $fieldKey): QueryRelate
     {
-        return $query->where('field', 'like', $field.'%');
+        return $query->where('field_key', 'like', $fieldKey.'%');
     }
 
     /**

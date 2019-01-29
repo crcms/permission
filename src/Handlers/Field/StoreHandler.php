@@ -18,6 +18,6 @@ final class StoreHandler extends AbstractHandler
         /* @var FieldRepository $repository */
         $repository = $this->app->make(FieldRepository::class);
 
-        return $repository->setGuard(['table_name', 'field', 'name'])->create($provider->all());
+        return $repository->setGuard(['table_name', 'field_key', 'name'])->create($provider->all());
     }
 }

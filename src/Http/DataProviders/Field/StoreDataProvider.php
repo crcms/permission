@@ -13,7 +13,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
     {
         return [
             'table_name' => ['required', 'max:128', 'string'],
-            'field' => ['required', 'max:128', 'string'],
+            'field_key' => ['required', 'max:128', 'string'],
             'name' => ['required', 'max:128', 'string'],
         ];
     }
@@ -25,7 +25,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
     {
         return [
             'table_name' => '表名',
-            'field' => '字段键',
+            'field_key' => '字段键',
             'name' => '字段名'
         ];
     }

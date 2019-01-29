@@ -24,7 +24,7 @@ class FieldTest extends TestCase
 
         $data = [
             'table_name' => Str::random(128),
-            'field' => Str::random(128),
+            'field_key' => Str::random(128),
             'name' => Str::random(128),
         ];
 
@@ -32,7 +32,7 @@ class FieldTest extends TestCase
 
         $this->assertInstanceOf(FieldModel::class, $result);
         $this->assertEquals($data['table_name'], $result->table_name);
-        $this->assertEquals($data['field'], $result->field);
+        $this->assertEquals($data['field_key'], $result->field);
         $this->assertEquals($data['name'], $result->name);
 
         return $result;
@@ -69,7 +69,7 @@ class FieldTest extends TestCase
 
         $this->assertInstanceOf(FieldModel::class, $result);
         $this->assertEquals($model->table_name, $result->table_name);
-        $this->assertEquals($model->field, $result->field);
+        $this->assertEquals($model->field_key, $result->field_key);
         $this->assertEquals($model->name, $result->name);
     }
 

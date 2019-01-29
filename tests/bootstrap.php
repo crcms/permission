@@ -170,8 +170,8 @@ foreach ($providers as $provider) {
 if (!$app->make('migrator')->getRepository()->repositoryExists()) {
     $app->make('migrator')->getRepository()->createRepository();
 }
-$app->make('migrator')->reset([__DIR__.'/../database/migrations']);
-$app->make('migrator')->run(__DIR__.'/../database/migrations');
+$app->make('migrator')->reset([__DIR__ . '/../database/migrations']);
+$app->make('migrator')->run(__DIR__ . '/../database/migrations');
 
 //$app->make(DatabaseSeeder::class)->run();
 

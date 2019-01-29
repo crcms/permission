@@ -83,7 +83,7 @@ class GetTableFieldCommand extends Command
             //获取列的详情信息
             foreach ($columns as $v) {
                 $temp['table_name'] = $val;
-                $temp['field'] = $v->getName();
+                $temp['field_key'] = $v->getName();
                 $temp['name'] = $v->getComment() ?? '';
                 $data[] = $temp;
             }
@@ -101,7 +101,7 @@ class GetTableFieldCommand extends Command
      */
     protected function dataStorage(FieldRepository $repository, Collection $collect, $tables)
     {
-        $guard = ['table_name', 'field', 'name'];
+        $guard = ['table_name', 'field_key', 'name'];
 
         try {
             //判断数据库是否为空
@@ -115,13 +115,13 @@ class GetTableFieldCommand extends Command
                 $data = [];
 
                 foreach ($collect as $k => $v) {
-                    $tmp[$k] = $v->table_name.'.'.$v->field;
+                    $tmp[$k] = $v->table_name.'.'.$v->field_key;
                 }
 
                 //新增的字段值入库
                 foreach ($tables as $_k => $_v) {
                     //按照表名.字段名组成新常量
-                    $new = $_v['table_name'].'.'.$_v['field'];
+                    $new = $_v['table_name'].'.'.$_v['field_key'];
 
                     //判断table_name, field 是否存在数据库中,若存在跳过循环
                     if (in_array($new, $tmp)) {
@@ -129,7 +129,7 @@ class GetTableFieldCommand extends Command
                     }
 
                     $data['table_name'] = $_v['table_name'];
-                    $data['field'] = $_v['field'];
+                    $data['field_key'] = $_v['field_key'];
                     $data['name'] = $_v['name'];
                     $repository->setGuard($guard)->create($data);
                 }
