@@ -6,6 +6,7 @@ use CrCms\Permission\Models\FieldModel;
 use CrCms\Permission\Repositories\Magic\FieldMagic;
 use CrCms\Repository\AbstractRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class FieldRepository extends AbstractRepository
 {
@@ -33,5 +34,13 @@ class FieldRepository extends AbstractRepository
     public function single(array $data): FieldModel
     {
         return $this->byIntIdOrFail($data['field']);
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAllList(): Collection
+    {
+        return $this->get();
     }
 }

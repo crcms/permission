@@ -35,5 +35,9 @@ Route::prefix('api')->group(function () {
         //字段
         Route::apiResource('fields', 'FieldController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
+
+        //常量
+        Route::get('permission-constants', 'ConstantController@getConstant')
+            ->name('permission-constants.get');
     });
 });

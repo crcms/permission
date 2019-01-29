@@ -19,7 +19,7 @@ class MenuResource extends Resource
             'title' => e($this->title ?? ''),
             'url' => e($this->url ?? ''),
             'route' => e($this->route ?? ''),
-            'status' => e($this->status ?? ''),
+            'status' => $this->status ?? '',
             'status_text' => e(CommonConstant::STATUS_LIST[$this->status] ?? ''),
             'remark' => e($this->remark ?? ''),
             'sort' => $this->sort ?? 0,
