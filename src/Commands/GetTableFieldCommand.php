@@ -65,6 +65,12 @@ class GetTableFieldCommand extends Command
     {
         $schema = Schema::getConnection()->getDoctrineSchemaManager();
 
+        $schema->getDatabasePlatform()
+        ->registerDoctrineTypeMapping('geometry', 'string');
+
+        $schema->getDatabasePlatform()
+            ->registerDoctrineTypeMapping('point', 'string');
+
         //获取所有表名
         $tables = $schema->listTableNames();
 
@@ -74,7 +80,9 @@ class GetTableFieldCommand extends Command
         //格式化返回数据
         foreach ($tables as $key => $val) {
             //判断是否含有迁移表
-            if (strtolower(substr($val, -10)) === 'migrations') {
+            $has_migrations = $this->config->get('database.migrations','migrations');
+
+            if (strtolower(substr($val, -10)) === strtolower(substr($has_migrations, -10))) {
                 continue;
             }
 

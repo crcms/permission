@@ -35,10 +35,10 @@ class CommonConstant
     const ACTION_DELETE = 'DELETE';
 
     const ACTION_LIST = [
-        self::ACTION_GET,
-        self::ACTION_POST,
-        self::ACTION_PUT,
-        self::ACTION_PATCH,
-        self::ACTION_DELETE,
+        self::ACTION_GET => self::ACTION_GET,
+        self::ACTION_POST => self::ACTION_POST,
+        self::ACTION_PUT => self::ACTION_PUT,
+        self::ACTION_PATCH => self::ACTION_PATCH,
+        self::ACTION_DELETE => self::ACTION_DELETE,
     ];
 }

@@ -29,7 +29,7 @@ class PermissionController extends Controller
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
-            PermissionResource::class,
+            config('permission.resources.permission') ?? PermissionResource::class,
             ['only' => ['id', 'title', 'route', 'action', 'status_text', 'created_at']]
         );
     }
@@ -42,7 +42,7 @@ class PermissionController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            PermissionResource::class
+            config('permission.resources.permission') ?? PermissionResource::class
         );
     }
 
@@ -54,7 +54,7 @@ class PermissionController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            PermissionResource::class
+            config('permission.resources.permission') ?? PermissionResource::class
         );
     }
 
@@ -66,7 +66,7 @@ class PermissionController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            PermissionResource::class
+            config('permission.resources.permission') ?? PermissionResource::class
         );
     }
 

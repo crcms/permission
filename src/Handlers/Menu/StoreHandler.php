@@ -26,7 +26,7 @@ class StoreHandler extends AbstractHandler
         $input = $provider->all();
 
         //过滤字段
-        $guard = ['title', 'url', 'route', 'sort', 'status', 'pid', 'remark'];
+        $guard = ['title', 'url', 'route', 'icon', 'sort', 'status', 'pid', 'remark'];
 
         return $repository->setGuard($guard)->create($input);
     }

@@ -21,14 +21,8 @@ class RoleFieldsUpdateHandler extends AbstractHandler
         $input['role'] = $provider->get('id');
         $model = $repository->single($input);
 
-        //获取角色权限的字段id
-        $fieldIds = $model->belongsToManyFields()->pluck('id')->toArray();
-
-        if (!empty($fieldIds)) {
-            $model->belongsToManyFields()->detach($fieldIds);
-        }
-
-        $model->belongsToManyFields()->attach($provider->get('field'));
+        //获取角色的字段
+        $model->belongsToManyFields()->sync($provider->get('field'));
 
         return $model;
     }

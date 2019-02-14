@@ -15,7 +15,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
     {
         return [
             'route' => ['required', 'max:255', 'string', 'unique:permissions,route'],
-            'action' => ['required', 'max:255', 'string', Rule::in(CommonConstant::ACTION_LIST)],
+            'action' => ['required', 'max:255', 'string', Rule::in(array_keys(CommonConstant::ACTION_LIST))],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'title' => ['sometimes', 'string', 'max:255'],
             'remark' => ['sometimes', 'string', 'max:255'],

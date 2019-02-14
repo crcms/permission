@@ -21,14 +21,8 @@ class RoleMenusUpdateHandler extends AbstractHandler
         $input['role'] = $provider->get('id');
         $model = $repository->single($input);
 
-        //获取角色权限的菜单id
-        $menuIds = $model->belongsToManyMenus()->pluck('id')->toArray();
-
-        if (!empty($menuIds)) {
-            $model->belongsToManyMenus()->detach($menuIds);
-        }
-
-        $model->belongsToManyMenus()->attach($provider->get('menu'));
+        //获取角色菜单
+        $model->belongsToManyMenus()->sync($provider->get('menu'));
 
         return $model;
     }

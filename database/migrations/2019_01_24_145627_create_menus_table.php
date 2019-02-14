@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->string('title', 128)->nullable()->comment('菜单标题');
             $table->string('url', 255)->nullable()->comment('url');
             $table->string('route', 128)->nullable()->comment('route');
+            $table->string('icon', 255)->nullable()->comment('菜单图标');
             $table->string('remark', 255)->nullable()->comment('备注');
             $table->integer('sort')->default(0)->comment('排序');
             $table->tinyInteger('status')->default(1)->comment('状态：1-正常 2-禁用');

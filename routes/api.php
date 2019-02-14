@@ -20,17 +20,33 @@ Route::prefix('api')->group(function () {
         Route::apiResource('permissions', 'PermissionController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
 
+        //权限搜索列表
+        Route::get('permission-lists', 'PermissionController@getLists')
+            ->name('permission-lists.get');
+
         //角色权限更新
         Route::post('role-permissions', 'RoleController@rolePermissionUpdate')
             ->name('role-permissions.post');
+
+        //当前某个角色权限列表
+        Route::get('role-permissions/{id}', 'RoleController@rolePermissionsList')
+            ->name('role-permissions.get');
 
         //角色菜单更新
         Route::post('role-menus', 'RoleController@roleMenusUpdate')
             ->name('role-menus.post');
 
+        //当前某个角色菜单列表
+        Route::get('role-menus/{id}', 'RoleController@roleMenusList')
+            ->name('role-menus.get');
+
         //角色字段更新
         Route::post('role-fields', 'RoleController@roleFieldsUpdate')
             ->name('role-fields.post');
+
+        //当前某个角色的字段列表
+        Route::get('role-fields/{id}', 'RoleController@roleFieldsList')
+            ->name('role-fields.get');
 
         //字段
         Route::apiResource('fields', 'FieldController')

@@ -31,7 +31,7 @@ class FieldController extends Controller
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
-            FieldResource::class,
+            config('permission.resources.field') ?? FieldResource::class,
             ['only' => ['id', 'field_key', 'name', 'created_at']]
         );
     }
@@ -45,7 +45,7 @@ class FieldController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            FieldResource::class
+            config('permission.resources.field') ?? FieldResource::class
         );
     }
 
@@ -57,7 +57,7 @@ class FieldController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            FieldResource::class
+            config('permission.resources.field') ?? FieldResource::class
         );
     }
 
@@ -69,7 +69,7 @@ class FieldController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            FieldResource::class
+            config('permission.resources.field') ?? FieldResource::class
         );
     }
 

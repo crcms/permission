@@ -49,7 +49,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            MenuResource::class
+            config('permission.resources.menu') ?? MenuResource::class
         );
     }
 
@@ -61,7 +61,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            MenuResource::class
+            config('permission.resources.menu') ?? MenuResource::class
         );
     }
 
@@ -73,7 +73,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            MenuResource::class
+            config('permission.resources.menu') ?? MenuResource::class
         );
     }
 

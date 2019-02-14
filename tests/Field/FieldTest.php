@@ -32,7 +32,7 @@ class FieldTest extends TestCase
 
         $this->assertInstanceOf(FieldModel::class, $result);
         $this->assertEquals($data['table_name'], $result->table_name);
-        $this->assertEquals($data['field_key'], $result->field);
+        $this->assertEquals($data['field_key'], $result->field_key);
         $this->assertEquals($data['name'], $result->name);
 
         return $result;

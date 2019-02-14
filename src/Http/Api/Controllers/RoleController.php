@@ -8,8 +8,11 @@ use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Role\DestroyHandler;
 use CrCms\Permission\Handlers\Role\ListHandler;
+use CrCms\Permission\Handlers\Role\RoleFieldsListHandler;
 use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
+use CrCms\Permission\Handlers\Role\RoleMenusListHandler;
 use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
+use CrCms\Permission\Handlers\Role\RolePermissionsListHandler;
 use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
 use CrCms\Permission\Handlers\Role\ShowHandler;
 use CrCms\Permission\Handlers\Role\StoreHandler;
@@ -36,7 +39,7 @@ class RoleController extends Controller
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
-            RoleResource::class,
+            config('permission.resources.role') ?? RoleResource::class,
             ['only' => ['id', 'name', 'status_text', 'super_text', 'created_at']]
         );
     }
@@ -50,7 +53,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
         );
     }
 
@@ -62,7 +65,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
         );
     }
 
@@ -74,7 +77,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
         );
     }
 
@@ -98,7 +101,18 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RolePermissionUpdateHandler::class)->handle($request),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
+        );
+    }
+
+    /**
+     * @param DataProviderContract $provider
+     * @return JsonResponse|\Illuminate\Http\Response
+     */
+    public function rolePermissionsList(DataProviderContract $provider)
+    {
+        return $this->response()->array(
+            $this->app->make(RolePermissionsListHandler::class)->handle($provider)
         );
     }
 
@@ -110,7 +124,18 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RoleMenusUpdateHandler::class)->handle($request),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
+        );
+    }
+
+    /**
+     * @param DataProviderContract $provider
+     * @return JsonResponse|\Illuminate\Http\Response
+     */
+    public function roleMenusList(DataProviderContract $provider)
+    {
+        return $this->response()->array(
+            $this->app->make(RoleMenusListHandler::class)->handle($provider)
         );
     }
 
@@ -122,7 +147,18 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RoleFieldsUpdateHandler::class)->handle($request),
-            RoleResource::class
+            config('permission.resources.role') ?? RoleResource::class
+        );
+    }
+
+    /**
+     * @param DataProviderContract $provider
+     * @return JsonResponse|\Illuminate\Http\Response
+     */
+    public function roleFieldsList(DataProviderContract $provider)
+    {
+        return $this->response()->array(
+            $this->app->make(RoleFieldsListHandler::class)->handle($provider)
         );
     }
 }

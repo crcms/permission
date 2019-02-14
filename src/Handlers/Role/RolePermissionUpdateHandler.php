@@ -21,15 +21,8 @@ class RolePermissionUpdateHandler extends AbstractHandler
         $input['role'] = $provider->get('id');
         $model = $repository->single($input);
 
-        //获取角色权限的权限id
-        $permissionIds = $model->belongsToManyPermissions()->pluck('id')->toArray();
-
-        //若当前角色有权限-则移除旧的权限
-        if (!empty($permissionIds)) {
-            $model->belongsToManyPermissions()->detach($permissionIds);
-        }
-
-        $model->belongsToManyPermissions()->attach($provider->get('permission'));
+        //更新角色权限
+        $model->belongsToManyPermissions()->sync($provider->get('permission'));
 
         return $model;
     }

@@ -17,6 +17,7 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'title' => ['required', 'max:128', Rule::unique('menus')->ignore($this->get('menu'))],
             'url' => ['sometimes', 'string', 'max:255'],
             'route' => ['sometimes', 'string', 'max:128'],
+            'icon' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
             'pid' => ['required', 'integer', function ($attribute, $value, $fail) {
@@ -38,6 +39,7 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'title' => '菜单标题',
             'url' => '链接',
             'route' => '路由',
+            'icon' => '菜单',
             'status' => '状态',
             'sort' => '排序',
             'pid' => '父级id',
