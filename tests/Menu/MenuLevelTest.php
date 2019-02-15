@@ -111,13 +111,24 @@ class MenuLevelTest extends TestCase
      */
     public function testDestroy(array $parentIds)
     {
+        $temp = MenuModel::create([
+            'title' => Str::random(10),
+            'url' => Str::random(10),
+            'route' => Str::random(20),
+            'remark' => Str::random(255),
+            'sort' => mt_rand(0, 1000),
+        ]);
+
         $parentId = min($parentIds);
 
         $handler = new DestroyHandler();
-        $handler->handle(new DataProvider(['menu' => $parentIds]));
+        $handler->handle(new DataProvider(['menu' => $parentId]));
 
         $result = MenuModel::whereIn('id',$parentIds)->get();
 
+        $result2 = MenuModel::find($temp->id);
+
         $this->assertEquals(true,$result->isEmpty());
+        $this->assertInstanceOf(MenuModel::class,$result2);
     }
 }

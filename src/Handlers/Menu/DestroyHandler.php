@@ -18,7 +18,7 @@ class DestroyHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        $ids = $repository->descendantAndSelfById($provider->get('menu'))->pluck('id');
+        $ids = $repository->descendantAndSelfById($provider->get('menu'))->pluck('id')->toArray();
 
         return $repository->delete($ids);
     }
