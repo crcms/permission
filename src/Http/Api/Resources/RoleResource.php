@@ -16,14 +16,14 @@ class RoleResource extends Resource
     {
         return [
             'id' => $this->id,
-            'name' => e($this->name ?? ''),
-            'status' => $this->status ?? 1,
-            'status_text' => e(CommonConstant::STATUS_LIST[$this->status] ?? ''),
-            'super' => $this->super ?? 0,
-            'super_text' => e(CommonConstant::SUPER_LIST[$this->super] ?? ''),
-            'remark' => $this->remark ?? '',
-            'created_at' => $this->created_at->toDateTimeString() ?? '',
-            'updated_at' => $this->updated_at->toDateTimeString() ?? '',
+            'name' => e($this->name),
+            'status' => $this->status,
+            'status_text' => CommonConstant::STATUS_LIST[$this->status],
+            'super' => $this->super,
+            'super_text' => CommonConstant::SUPER_LIST[$this->super],
+            'remark' => $this->remark,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString(),
         ];
     }
 

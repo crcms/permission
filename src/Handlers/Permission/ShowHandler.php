@@ -18,6 +18,6 @@ class ShowHandler extends AbstractHandler
         /* @var PermissionRepository $repository */
         $repository = $this->app->make(PermissionRepository::class);
 
-        return $repository->single($provider->all());
+        return $repository->byIntIdOrFail($provider->get('permission'));
     }
 }

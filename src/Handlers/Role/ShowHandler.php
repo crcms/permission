@@ -9,12 +9,17 @@ use CrCms\Permission\Repositories\RoleRepository;
 
 class ShowHandler extends AbstractHandler
 {
-
+    /**
+     * handle
+     *
+     * @param DataProviderContract $provider
+     * @return RoleModel
+     */
     public function handle(DataProviderContract $provider): RoleModel
     {
         /* @var RoleRepository $repository*/
         $repository = $this->app->make(RoleRepository::class);
 
-        return $repository->single($provider->all());
+        return $repository->byIntIdOrFail($provider->get('role'));
     }
 }

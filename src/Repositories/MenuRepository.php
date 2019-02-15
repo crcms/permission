@@ -11,43 +11,66 @@ use Illuminate\Support\Collection;
 class MenuRepository extends AbstractRepository
 {
     /**
+     * @var array
+     */
+    protected $guard = ['title', 'url', 'route', 'icon', 'sort', 'status', 'parent_id', 'remark'];
+
+    /**
      * @return MenuModel
      */
     public function newModel(): MenuModel
     {
         return new MenuModel;
     }
+//
+//    /**
+//     * @param array $data
+//     * @return Collection
+//     */
+//    public function paginate(array $data): Collection
+//    {
+//        return $this->magic(new MenuMagic($data))
+//            ->orderBy('sort', 'desc')
+//            ->get();
+//    }
 
     /**
-     * @param array $data
+     * descendantAndSelfById
+     *
+     * @param int $id
      * @return Collection
      */
-    public function paginate(array $data): Collection
+    public function descendantAndSelfById(int $id): Collection
     {
-        return $this->magic(new MenuMagic($data))
-            ->orderBy('sort', 'desc')
-            ->get();
+        return MenuModel::whereDescendantAndSelf($id)->get();
     }
 
     /**
-     * @param array $data
-     * @return MenuModel
-     */
-    public function single(array $data): MenuModel
-    {
-        return $this->byIntIdOrFail($data['menu']);
-    }
-
-    /**
-     * 判断有无子集数据
+     * allToTree
      *
-     * @param int $pid
-     * @return mixed
+     * @return Collection
      */
-    public function hasChildren($pid = 0)
+    public function allToTree(): Collection
     {
-        return $this->where('pid', $pid)->get();
+        return $this->all()->toTree();
     }
+
+//    public function hasChildren(MenuModel $model)
+//    {
+//        return $model->hasChildren();
+//    }
+
+//
+//    /**
+//     * 判断有无子集数据
+//     *
+//     * @param int $parentId
+//     * @return bool
+//     */
+//    public function hasChildren($parentId = 0): bool
+//    {
+//        return (bool)$this->where('parent_id', $parentId)->first();
+//    }
 
     /**
      * @param array $data

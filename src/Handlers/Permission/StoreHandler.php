@@ -18,11 +18,6 @@ class StoreHandler extends AbstractHandler
         /* @var PermissionRepository $repository */
         $repository = $this->app->make(PermissionRepository::class);
 
-        //整合数据
-        $input = $provider->all();
-        
-        $guard = ['title', 'route', 'action', 'remark', 'status'];
-
-        return $repository->setGuard($guard)->create($input);
+        return $repository->create($provider->all());
     }
 }

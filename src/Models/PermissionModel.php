@@ -13,9 +13,4 @@ class PermissionModel extends Model
      * @var string
      */
     protected $table = 'permissions';
-
-    /**
-     * @var bool
-     */
-    public $timestamps = true;
 }

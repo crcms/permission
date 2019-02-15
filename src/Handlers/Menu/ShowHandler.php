@@ -18,6 +18,6 @@ class ShowHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        return $repository->single($provider->all());
+        return $repository->byIntIdOrFail($provider->get('menu'));
     }
 }

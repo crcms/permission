@@ -23,9 +23,9 @@ class FieldTest extends TestCase
         $handler = new StoreHandler();
 
         $data = [
-            'table_name' => Str::random(128),
-            'field_key' => Str::random(128),
-            'name' => Str::random(128),
+            'table_name' => Str::random(10),
+            'field_key' => Str::random(10),
+            'name' => Str::random(10),
         ];
 
         $result = $handler->handle(new DataProvider($data));
@@ -81,7 +81,7 @@ class FieldTest extends TestCase
         $handler = new UpdateHandler();
 
         $data = [
-            'name' => Str::random(128),
+            'name' => Str::random(10),
             'field' => $model->id,
         ];
 

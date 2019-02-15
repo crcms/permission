@@ -26,21 +26,4 @@ class FieldRepository extends AbstractRepository
     {
         return $this->magic(new FieldMagic($data))->paginate();
     }
-
-    /**
-     * @param array $data
-     * @return FieldModel
-     */
-    public function single(array $data): FieldModel
-    {
-        return $this->byIntIdOrFail($data['field']);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getAllList(): Collection
-    {
-        return $this->get();
-    }
 }

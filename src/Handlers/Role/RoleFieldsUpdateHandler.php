@@ -18,12 +18,10 @@ class RoleFieldsUpdateHandler extends AbstractHandler
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
-        $input['role'] = $provider->get('id');
-        $model = $repository->single($input);
+        $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        //获取角色的字段
-        $model->belongsToManyFields()->sync($provider->get('field'));
+        $repository->syncRoleFields($role, $provider->get('field'));
 
-        return $model;
+        return $role;
     }
 }

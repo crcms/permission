@@ -10,6 +10,11 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 class PermissionRepository extends AbstractRepository
 {
     /**
+     * @var array
+     */
+    protected $guard = ['title', 'route', 'action', 'remark', 'status'];
+
+    /**
      * @return PermissionModel
      */
     public function newModel(): PermissionModel
@@ -21,27 +26,10 @@ class PermissionRepository extends AbstractRepository
      * @param array $data
      * @return LengthAwarePaginator
      */
-    public function paginate(array $data): LengthAwarePaginator
+    public function allBy(array $data): LengthAwarePaginator
     {
         return $this->magic(new PermissionMagic($data))
             ->orderBy('id', 'desc')
-            ->paginate();
-    }
-
-    /**
-     * @param array $data
-     * @return PermissionModel
-     */
-    public function single(array $data): PermissionModel
-    {
-        return $this->byIntIdOrFail($data['permission']);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAll()
-    {
-        return $this->newModel()->get();
+            ->get();
     }
 }

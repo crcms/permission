@@ -18,13 +18,8 @@ class DestroyHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        //判断是否含有子集数据
-        $models = $repository->hasChildren($provider->get('menu'));
+        $ids = $repository->descendantAndSelfById($provider->get('menu'))->pluck('id');
 
-        if (!$models->isEmpty()) {
-            throw new \Exception('含有子集菜单,不允许删除');
-        }
-
-        return $repository->delete($provider->get('menu'));
+        return $repository->delete($ids);
     }
 }

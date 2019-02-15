@@ -13,11 +13,6 @@ class RoleModel extends Model
     protected $table = 'roles';
 
     /**
-     * @var bool
-     */
-    public $timestamps = true;
-
-    /**
      * @return BelongsToMany
      */
     public function belongsToManyPermissions(): BelongsToMany

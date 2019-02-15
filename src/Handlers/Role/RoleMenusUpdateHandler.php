@@ -18,12 +18,10 @@ class RoleMenusUpdateHandler extends AbstractHandler
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
-        $input['role'] = $provider->get('id');
-        $model = $repository->single($input);
+        $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        //获取角色菜单
-        $model->belongsToManyMenus()->sync($provider->get('menu'));
+        $repository->syncRoleMenus($role, $provider->get('menu'));
 
-        return $model;
+        return $role;
     }
 }

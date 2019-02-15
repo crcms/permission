@@ -18,6 +18,6 @@ class ListHandler extends AbstractHandler
         /* @var PermissionRepository $repository */
         $repository = $this->app->make(PermissionRepository::class);
 
-        return $repository->paginate($provider->all());
+        return $repository->allBy($provider->all());
     }
 }

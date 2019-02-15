@@ -22,12 +22,6 @@ class StoreHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        //数据整合
-        $input = $provider->all();
-
-        //过滤字段
-        $guard = ['title', 'url', 'route', 'icon', 'sort', 'status', 'pid', 'remark'];
-
-        return $repository->setGuard($guard)->create($input);
+        return $repository->create($provider->all());
     }
 }

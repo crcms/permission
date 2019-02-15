@@ -13,9 +13,4 @@ class FieldModel extends Model
      * @var string
      */
     protected $table = 'fields';
-
-    /**
-     * @var bool
-     */
-    public $timestamps = true;
 }

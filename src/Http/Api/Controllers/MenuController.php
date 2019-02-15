@@ -7,7 +7,6 @@ use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Menu\DestroyHandler;
 use CrCms\Permission\Handlers\Menu\ListHandler;
-use CrCms\Permission\Handlers\Menu\SearchHandler;
 use CrCms\Permission\Handlers\Menu\ShowHandler;
 use CrCms\Permission\Handlers\Menu\StoreHandler;
 use CrCms\Permission\Handlers\Menu\UpdateHandler;
@@ -32,9 +31,6 @@ class MenuController extends Controller
      */
     public function index(DataProviderContract $provider): JsonResponse
     {
-        $filter = ['id', 'title', 'url', 'route', 'status_text', 'pid', 'created_at'];
-        $provider['filter'] = $filter;
-
         return $this->response()->data(
             $this->app->make(ListHandler::class)->handle($provider)
         );
@@ -49,7 +45,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            config('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu') ?? MenuResource::class
         );
     }
 
@@ -61,7 +57,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            config('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu') ?? MenuResource::class
         );
     }
 
@@ -73,7 +69,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            config('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu') ?? MenuResource::class
         );
     }
 
@@ -87,20 +83,5 @@ class MenuController extends Controller
         $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
-    }
-
-    /**
-     * @param DataProviderContract $provider
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    public function getList(DataProviderContract $provider)
-    {
-        $filter = ['id', 'title', 'pid'];
-        $provider['filter'] = $filter;
-
-        return $this->response()->data(
-            $this->app->make(SearchHandler::class)->handle($provider)
-        );
     }
 }

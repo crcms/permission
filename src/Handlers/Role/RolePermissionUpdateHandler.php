@@ -18,12 +18,10 @@ class RolePermissionUpdateHandler extends AbstractHandler
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
-        $input['role'] = $provider->get('id');
-        $model = $repository->single($input);
+        $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        //更新角色权限
-        $model->belongsToManyPermissions()->sync($provider->get('permission'));
+        $repository->syncRolePermissions($role, $provider->get('permission'));
 
-        return $model;
+        return $role;
     }
 }

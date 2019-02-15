@@ -18,11 +18,6 @@ class UpdateHandler extends AbstractHandler
         /* @var PermissionRepository $repository */
         $repository = $this->app->make(PermissionRepository::class);
 
-        //整合数据
-        $input = $provider->all();
-
-        $guard = ['route', 'action', 'title', 'remark', 'status'];
-
-        return $repository->setGuard($guard)->update($input, $provider->get('permission'));
+        return $repository->update($provider->all(), $provider->get('permission'));
     }
 }

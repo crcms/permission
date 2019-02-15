@@ -20,13 +20,14 @@ class MenuResource extends Resource
             'url' => e($this->url ?? ''),
             'route' => e($this->route ?? ''),
             'icon' => e($this->icon ?? ''),
-            'status' => $this->status ?? '',
-            'status_text' => e(CommonConstant::STATUS_LIST[$this->status] ?? ''),
+            'status' => $this->status,
+            'status_text' =>CommonConstant::STATUS_LIST[$this->status],
             'remark' => e($this->remark ?? ''),
-            'sort' => $this->sort ?? 0,
-            'pid' => $this->pid ?? 0,
-            'created_at' => $this->created_at->toDateTimeString() ?? '',
-            'updated_at' => $this->updated_at->toDateTimeString() ?? '',
+            'sort' => $this->sort,
+            'parent_id' => $this->parent_id,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString(),
+            'children' => empty($this->children) ? [] : self::collection($this->children)->toArray($request),
         ];
     }
 }

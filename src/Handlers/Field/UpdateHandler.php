@@ -18,11 +18,6 @@ class UpdateHandler extends AbstractHandler
         /* @var FieldRepository $repository */
         $repository = $this->app->make(FieldRepository::class);
 
-        //整合数据
-        $input = $provider->all();
-
-        $guard = ['name'];
-
-        return $repository->setGuard($guard)->update($input, $provider->get('field'));
+        return $repository->setGuard(['name'])->update($provider->all(), $provider->get('field'));
     }
 }

@@ -18,6 +18,6 @@ class UpdateHandler extends AbstractHandler
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
-        return $repository->setGuard(['name', 'status', 'super', 'remark'])->update($provider->all(), $provider->get('role'));
+        return $repository->update($provider->all(), $provider->get('role'));
     }
 }

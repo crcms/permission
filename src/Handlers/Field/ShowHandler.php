@@ -18,6 +18,6 @@ class ShowHandler extends AbstractHandler
         /* @var FieldRepository $repository */
         $repository = $this->app->make(FieldRepository::class);
 
-        return $repository->single($provider->all());
+        return $repository->byIntIdOrFail($provider->get('field'));
     }
 }

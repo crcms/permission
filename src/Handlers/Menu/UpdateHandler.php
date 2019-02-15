@@ -18,12 +18,6 @@ class UpdateHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        //整合数据
-        $input = $provider->all();
-
-        //过滤字段
-        $guard = ['title', 'url', 'route', 'icon', 'sort', 'status', 'pid', 'remark'];
-
-        return $repository->setGuard($guard)->update($input, $provider->get('menu'));
+        return $repository->update($provider->all(), $provider->get('menu'));
     }
 }

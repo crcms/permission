@@ -36,11 +36,11 @@ $app->singleton('config', function () use ($config) {
             'connections' => [
                 'mysql' => [
                     'driver' => 'mysql',
-                    'host' => '127.0.0.1',
+                    'host' => env('DB_HOST'),
                     'port' => '3306',
-                    'database' => 'permissions',
-                    'username' => 'homestead',
-                    'password' => 'secret',
+                    'database' => env('DB_DATABASE'),
+                    'username' => env('DB_USERNAME'),
+                    'password' => env('DB_PASSWORD'),
                     'charset' => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
                     'prefix' => '',
@@ -147,6 +147,7 @@ $providers = [
     \Illuminate\Validation\ValidationServiceProvider::class,
     \CrCms\Foundation\Transporters\DataServiceProvider::class,
     \CrCms\Repository\RepositoryServiceProvider::class,
+    \Kalnoy\Nestedset\NestedSetServiceProvider::class,
 ];
 
 $providers = array_map(function ($provider) use ($app) {

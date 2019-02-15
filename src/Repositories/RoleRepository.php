@@ -6,9 +6,15 @@ use CrCms\Permission\Models\RoleModel;
 use CrCms\Permission\Repositories\Magic\RoleMagic;
 use CrCms\Repository\AbstractRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class RoleRepository extends AbstractRepository
 {
+    /**
+     * @var array
+     */
+    protected $guard = ['name', 'status', 'super', 'remark'];
+
     /**
      * @return RoleModel
      */
@@ -29,11 +35,71 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * @param array $data
-     * @return RoleModel
+     * syncRoleMenus
+     *
+     * @param RoleModel $role
+     * @param array $menus
+     * @return array
      */
-    public function single(array $data): RoleModel
+    public function syncRoleMenus(RoleModel $role, array $menus): array
     {
-        return $this->byIntIdOrFail($data['role']);
+        return $role->belongsToManyMenus()->sync($menus);
+    }
+
+    /**
+     * syncRolePermissions
+     *
+     * @param RoleModel $role
+     * @param array $permissions
+     * @return array
+     */
+    public function syncRolePermissions(RoleModel $role, array $permissions): array
+    {
+        return $role->belongsToManyPermissions()->sync($permissions);
+    }
+
+    /**
+     * syncRoleFields
+     *
+     * @param RoleModel $role
+     * @param array $fields
+     * @return array
+     */
+    public function syncRoleFields(RoleModel $role, array $fields): array
+    {
+        return $role->belongsToManyFields()->sync($fields);
+    }
+
+    /**
+     * rolePermissions
+     *
+     * @param RoleModel $role
+     * @return Collection
+     */
+    public function rolePermissions(RoleModel $role): Collection
+    {
+        return $role->belongsToManyPermissions()->get();
+    }
+
+    /**
+     * roleFields
+     *
+     * @param RoleModel $role
+     * @return Collection
+     */
+    public function roleFields(RoleModel $role): Collection
+    {
+        return $role->belongsToManyFields()->get();
+    }
+
+    /**
+     * roleMenus
+     *
+     * @param RoleModel $role
+     * @return Collection
+     */
+    public function roleMenus(RoleModel $role): Collection
+    {
+        return $role->belongsToManyMenus()->get();
     }
 }
