@@ -24,9 +24,9 @@ class PermissionTest extends TestCase
         $handler = new StoreHandler();
 
         $data = [
-            'title' => Str::random(255),
-            'route' => Str::random(255),
-            'action' => Str::random(255),
+            'title' => Str::random(10),
+            'route' => Str::random(10),
+            'action' => Str::random(10),
             'remark' => Str::random(255),
             'status' => CommonConstant::STATUS_FORBID,
         ];

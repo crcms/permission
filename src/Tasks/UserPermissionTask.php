@@ -8,7 +8,8 @@ use CrCms\Permission\Contracts\UserRoleRelationContract;
 use CrCms\Permission\Models\PermissionModel;
 use CrCms\Permission\Models\RoleModel;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
-use Illuminate\Support\Collection;
+use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Permission\Repositories\RoleRepository;
 
 class UserPermissionTask extends AbstractTask implements TaskContract
 {
@@ -20,30 +21,19 @@ class UserPermissionTask extends AbstractTask implements TaskContract
     {
         /* @var UserRoleRelationContract $user */
         $user = $params[0];
+        /* @var RoleRepository $repository */
+        $repository = $this->app->make(RoleRepository::class);
 
         $roles = $user->belongsToManyRoles()->get();
 
-        if ($this->isSuperRole($roles)) {
-
+        if ($repository->containsSuperRole($roles)) {
+            return $this->app->make(PermissionRepository::class)->all()->pluck('route')->toArray();
         }
 
-        $roles->map(function (RoleModel $role) {
+        return $repository->filterNotNormalRole($roles)->map(function(RoleModel $role){
             return $role->belongsToManyPermissions()->get();
         })->flatten()->filter(function (PermissionModel $permission) {
             return $permission->status === CommonConstant::STATUS_NORMAL;
-        })->map(function (PermissionModel $permission) {
-            return $permission->only(['id', 'title', 'route']);
-        })->unique('id')->toArray();
-    }
-
-    /**
-     * @param Collection $roles
-     * @return bool
-     */
-    protected function isSuperRole(Collection $roles): bool
-    {
-        return $roles->filter(function (RoleModel $role) {
-            return $role->super === CommonConstant::SUPER_YES;
-        })->isNotEmpty();
+        })->unique('route')->pluck('route')->toArray();
     }
 }

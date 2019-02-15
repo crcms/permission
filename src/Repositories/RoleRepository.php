@@ -3,6 +3,7 @@
 namespace CrCms\Permission\Repositories;
 
 use CrCms\Permission\Models\RoleModel;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 use CrCms\Permission\Repositories\Magic\RoleMagic;
 use CrCms\Repository\AbstractRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -101,5 +102,31 @@ class RoleRepository extends AbstractRepository
     public function roleMenus(RoleModel $role): Collection
     {
         return $role->belongsToManyMenus()->get();
+    }
+
+    /**
+     * containsSuperRole
+     *
+     * @param Collection $roles
+     * @return bool
+     */
+    public function containsSuperRole(Collection $roles): bool
+    {
+        return $roles->filter(function (RoleModel $role) {
+            return $role->super === CommonConstant::SUPER_YES;
+        })->isNotEmpty();
+    }
+
+    /**
+     * filterNotNormalRole
+     *
+     * @param Collection $roles
+     * @return Collection
+     */
+    public function filterNotNormalRole(Collection $roles): Collection
+    {
+        return $roles->filter(function (RoleModel $role) {
+            return $role->status === CommonConstant::STATUS_NORMAL;
+        });
     }
 }
