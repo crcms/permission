@@ -9,9 +9,6 @@ Route::prefix('api')->group(function () {
         Route::apiResource('menus', 'MenuController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
 
-        //菜单搜索接口
-        Route::get('menu-lists', 'MenuController@getList')->name('menu-lists.get');
-
         //角色
         Route::apiResource('roles', 'RoleController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
@@ -19,10 +16,6 @@ Route::prefix('api')->group(function () {
         //权限
         Route::apiResource('permissions', 'PermissionController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
-
-        //权限搜索列表
-        Route::get('permission-lists', 'PermissionController@getLists')
-            ->name('permission-lists.get');
 
         //角色权限更新
         Route::post('role-permissions', 'RoleController@rolePermissionUpdate')

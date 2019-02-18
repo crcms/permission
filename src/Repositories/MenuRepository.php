@@ -3,6 +3,8 @@
 namespace CrCms\Permission\Repositories;
 
 use CrCms\Permission\Models\MenuModel;
+use CrCms\Permission\Models\RoleModel;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 use CrCms\Repository\AbstractRepository;
 use Illuminate\Support\Collection;
 
@@ -40,5 +42,24 @@ class MenuRepository extends AbstractRepository
     public function allToTree(): Collection
     {
         return $this->all()->toTree();
+    }
+
+    /**
+     * @return Collection
+     */
+    public function allByStatusNormal(): Collection
+    {
+        return $this->where('status',CommonConstant::STATUS_NORMAL)->get()->toTree();
+    }
+
+    /**
+     * @param RoleModel $role
+     * @return Collection
+     */
+    public function allByRole(RoleModel $role): Collection
+    {
+        return $role->belongsToManyMenus()->get()->filter(function (MenuModel $menu) {
+            return $menu->status === CommonConstant::STATUS_NORMAL;
+        })->toTree();
     }
 }

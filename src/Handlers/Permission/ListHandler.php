@@ -13,7 +13,7 @@ class ListHandler extends AbstractHandler
      * @param DataProviderContract $provider
      * @return Paginator
      */
-    public function handle(DataProviderContract $provider): Paginator
+    public function handle(DataProviderContract $provider)
     {
         /* @var PermissionRepository $repository */
         $repository = $this->app->make(PermissionRepository::class);

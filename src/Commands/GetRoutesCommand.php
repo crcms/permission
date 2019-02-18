@@ -77,7 +77,7 @@ class GetRoutesCommand extends Command
         //判断permission中路由是否存在
         /* @var PermissionRepository $repository*/
         $repository = app(PermissionRepository::class);
-        $permissions = $repository->getAll();
+        $permissions = $repository->all();
 
         $data = [];
         $guard = ['route', 'action', 'status', 'created_at', 'updated_at'];

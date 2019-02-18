@@ -20,6 +20,6 @@ class RoleMenusListHandler extends AbstractHandler implements HandlerContract
 
         $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        return $repository->roleMenus($role)->pluck('id');
+        return $repository->roleMenus($role)->pluck('id')->toArray();
     }
 }

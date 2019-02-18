@@ -2,7 +2,7 @@
 
 namespace CrCms\Permission;
 
-use CrCms\Foundation\ModuleServiceProvider;
+use CrCms\Foundation\Providers\ModuleServiceProvider;
 
 /**
  * Class PermissionServiceProvider

@@ -13,13 +13,13 @@ class RolePermissionsListHandler extends AbstractHandler implements HandlerContr
      * @param DataProviderContract $provider
      * @return array
      */
-    public function handle(DataProviderContract $provider): array
+    public function handle(DataProviderContract $provider)
     {
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
         $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        return $repository->rolePermissions($role)->pluck('id');
+        return $repository->rolePermissions($role)->pluck('id')->toArray();
     }
 }

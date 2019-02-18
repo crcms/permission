@@ -129,4 +129,13 @@ class RoleRepository extends AbstractRepository
             return $role->status === CommonConstant::STATUS_NORMAL;
         });
     }
+
+    /**
+     * @return Collection
+     */
+    public function allByStatusNormal(): Collection
+    {
+        return $this->where('status', CommonConstant::STATUS_NORMAL)
+            ->get();
+    }
 }

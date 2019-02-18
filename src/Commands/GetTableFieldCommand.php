@@ -48,7 +48,7 @@ class GetTableFieldCommand extends Command
         $repository = $this->app->make(FieldRepository::class);
 
         //获取数据库中字段的数据信息
-        $models = $repository->getAllList();
+        $models = $repository->all();
 
         //获取所有表的字段信息
         $tables = $this->getAllTables();

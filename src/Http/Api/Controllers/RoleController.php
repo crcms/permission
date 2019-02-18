@@ -109,7 +109,7 @@ class RoleController extends Controller
      */
     public function rolePermissionsList(DataProviderContract $provider)
     {
-        return $this->response()->array(
+        return $this->response()->data(
             $this->app->make(RolePermissionsListHandler::class)->handle($provider)
         );
     }
@@ -132,7 +132,7 @@ class RoleController extends Controller
      */
     public function roleMenusList(DataProviderContract $provider)
     {
-        return $this->response()->array(
+        return $this->response()->data(
             $this->app->make(RoleMenusListHandler::class)->handle($provider)
         );
     }
@@ -155,7 +155,7 @@ class RoleController extends Controller
      */
     public function roleFieldsList(DataProviderContract $provider)
     {
-        return $this->response()->array(
+        return $this->response()->data(
             $this->app->make(RoleFieldsListHandler::class)->handle($provider)
         );
     }

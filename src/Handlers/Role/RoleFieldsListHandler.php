@@ -20,6 +20,6 @@ class RoleFieldsListHandler extends AbstractHandler implements HandlerContract
 
         $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        return $repository->roleFields($role)->pluck('id');
+        return $repository->roleFields($role)->pluck('id')->toArray();
     }
 }
