@@ -9,6 +9,5 @@ return [
         'role'  => \CrCms\Permission\Http\Api\Resources\RoleResource::class,
     ],
 
-    // required
-    'user_model' => null,
+
 ];
