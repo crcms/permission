@@ -19,6 +19,6 @@ class ListHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        return $repository->allToTree();
+        return $repository->all();
     }
 }

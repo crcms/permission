@@ -16,13 +16,13 @@ class MenuResource extends Resource
     {
         return [
             'id' => $this->id,
-            'title' => e($this->title ?? ''),
-            'url' => e($this->url ?? ''),
-            'route' => e($this->route ?? ''),
-            'icon' => e($this->icon ?? ''),
+            'title' => e($this->title),
+            'url' => e($this->url),
+            'route' => e($this->route),
+            'icon' => e($this->icon),
             'status' => $this->status,
             'status_text' =>CommonConstant::STATUS_LIST[$this->status],
-            'remark' => e($this->remark ?? ''),
+            'remark' => e($this->remark),
             'sort' => $this->sort,
             'parent_id' => $this->parent_id,
             'created_at' => $this->created_at->toDateTimeString(),

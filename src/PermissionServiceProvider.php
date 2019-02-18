@@ -3,6 +3,7 @@
 namespace CrCms\Permission;
 
 use CrCms\Foundation\Providers\ModuleServiceProvider;
+use CrCms\Permission\Http\Middleware\UserPermissionMiddleware;
 
 /**
  * Class PermissionServiceProvider
@@ -30,7 +31,15 @@ class PermissionServiceProvider extends ModuleServiceProvider
         $this->publishes([
             $this->basePath.'config/config.php' => config_path($this->name.'.php'),
         ]);
+
+        //load middleware alias
+        $this->aliasMiddleware();
     }
+
+//    protected function map(): void
+//    {
+//
+//    }
 
     /**
      * @return void
@@ -48,5 +57,23 @@ class PermissionServiceProvider extends ModuleServiceProvider
     protected function repositoryListeners(): void
     {
 
+    }
+
+    /**
+     * Alias the middleware.
+     *
+     * @return void
+     */
+    protected function aliasMiddleware()
+    {
+        $router = $this->app['router'];
+
+        $routerMiddleware = [
+            'checkUserPermission' => UserPermissionMiddleware::class,
+        ];
+
+        foreach ($routerMiddleware as $alias => $middleware) {
+            $router->aliasMiddleware($alias, $middleware);
+        }
     }
 }

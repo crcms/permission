@@ -38,7 +38,7 @@ class RoleController extends Controller
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -51,7 +51,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -63,7 +63,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -75,7 +75,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -99,7 +99,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RolePermissionUpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -122,7 +122,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RoleMenusUpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 
@@ -145,7 +145,7 @@ class RoleController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(RoleFieldsUpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.role') ?? RoleResource::class
+            $this->config->get('permission.resources.role', RoleResource::class)
         );
     }
 

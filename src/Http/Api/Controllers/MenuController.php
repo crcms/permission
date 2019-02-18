@@ -31,8 +31,9 @@ class MenuController extends Controller
      */
     public function index(DataProviderContract $provider): JsonResponse
     {
-        return $this->response()->data(
-            $this->app->make(ListHandler::class)->handle($provider)
+        return $this->response()->collection(
+            $this->app->make(ListHandler::class)->handle($provider),
+            $this->config->get('permission.resources.menu',MenuResource::class)
         );
     }
 
@@ -45,7 +46,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            $this->config->get('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu',MenuResource::class)
         );
     }
 
@@ -57,7 +58,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            $this->config->get('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu',MenuResource::class)
         );
     }
 
@@ -69,7 +70,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.menu') ?? MenuResource::class
+            $this->config->get('permission.resources.menu',MenuResource::class)
         );
     }
 
