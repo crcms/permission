@@ -18,14 +18,14 @@ class GetTableFieldCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'get:table_field';
+    protected $signature = 'permission:fields';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '获取表字段值';
+    protected $description = 'Get all table fields';
 
     /**
      * Create a new command instance.

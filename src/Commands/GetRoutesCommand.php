@@ -14,14 +14,14 @@ class GetRoutesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'get:routes';
+    protected $signature = 'permission:routes';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '获取所有api路由';
+    protected $description = 'Get all routes';
 
     /**
      * Create a new command instance.
