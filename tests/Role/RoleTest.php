@@ -111,19 +111,19 @@ class RoleTest extends TestCase
     /**
      * @depends testStore
      */
-    public function testRolePermissionUpdate(RoleModel $role)
-    {
-        $handler = new RolePermissionUpdateHandler();
-
-        $data = [
-            'id' => $role->id,
-            'permission' => [1, 2, 3, 4, 5]
-        ];
-
-        $result = $handler->handle(new DataProvider($data));
-
-        $this->assertInstanceOf(RoleModel::class,$result);
-    }
+//    public function testRolePermissionUpdate(RoleModel $role)
+//    {
+//        $handler = new RolePermissionUpdateHandler();
+//
+//        $data = [
+//            'id' => $role->id,
+//            'permission' => [1, 2, 3, 4, 5]
+//        ];
+//
+//        $result = $handler->handle(new DataProvider($data));
+//
+//        $this->assertInstanceOf(RoleModel::class,$result);
+//    }
 
     /**
      * @depends testStore
