@@ -20,7 +20,7 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'icon' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
-            'pid' => ['required', 'integer', function ($attribute, $value, $fail) {
+            'parent_id' => ['required', 'integer', function ($attribute, $value, $fail) {
                     if ((int)$value === (int)$this->get('menu')) {
                         throw new \InvalidArgumentException('父级id不能为本身');
                     }
@@ -42,7 +42,7 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'icon' => '菜单',
             'status' => '状态',
             'sort' => '排序',
-            'pid' => '父级id',
+            'parent_id' => '父级id',
             'remark' => '备注',
         ];
     }
