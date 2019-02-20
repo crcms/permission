@@ -6,6 +6,7 @@ use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Handlers\Permission\DestroyHandler;
+use CrCms\Permission\Handlers\Permission\GroupListHandler;
 use CrCms\Permission\Handlers\Permission\ListHandler;
 use CrCms\Permission\Handlers\Permission\ShowHandler;
 use CrCms\Permission\Handlers\Permission\StoreHandler;
@@ -79,5 +80,16 @@ class PermissionController extends Controller
         $this->app->make(DestroyHandler::class)->handle($provider);
 
         return $this->response()->noContent();
+    }
+
+    /**
+     * @param DataProviderContract $provider
+     * @return JsonResponse
+     */
+    public function groupLists(DataProviderContract $provider)
+    {
+        return $this->response()->data(
+            $this->app->make(GroupListHandler::class)->handle($provider)
+        );
     }
 }

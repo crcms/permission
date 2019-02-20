@@ -85,7 +85,7 @@ class GetRoutesCommand extends Command
             foreach ($routes as $key => $val) {
                 $data['route'] = $val['route'];
                 $data['action'] = $val['method'];
-                $data['status'] = CommonConstant::STATUS_FORBID;
+                $data['status'] = CommonConstant::STATUS_NORMAL;
                 $repository->setGuard($guard)->create($data);
             }
         } else {

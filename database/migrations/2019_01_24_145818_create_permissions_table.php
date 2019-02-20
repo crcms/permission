@@ -19,6 +19,7 @@ class CreatePermissionsTable extends Migration
             $table->string('route', 60)->nullable(true)->comment('路由');
             $table->string('action', 10)->nullable()->comment('http请求方法');
             $table->string('remark', 255)->nullable()->comment('备注');
+            $table->string('tags', 30)->nullable()->comment('标签');
             $table->unsignedTinyInteger('status')->default(1)->comment('状态：1-正常 2-禁用');
             $table->unsignedBigInteger('created_at')->default(0)->comment('创建时间');
             $table->unsignedBigInteger('updated_at')->default(0)->comment('更新时间');

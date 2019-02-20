@@ -19,6 +19,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'title' => ['sometimes', 'string', 'max:255'],
             'remark' => ['sometimes', 'string', 'max:255'],
+            'tags' => ['required', 'max:30', 'string'],
         ];
     }
 
@@ -33,6 +34,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'status' => '状态',
             'title' => '权限标题',
             'remark' => '备注',
+            'tags' => '标签'
         ];
     }
 }

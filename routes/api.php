@@ -17,6 +17,10 @@ Route::prefix('api')->group(function () {
         Route::apiResource('permissions', 'PermissionController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
 
+        //权限分组菜单
+        Route::get('permission-group-lists', 'PermissionController@groupLists')
+            ->name('permission-group-lists.get');
+
         //角色权限更新
         Route::post('role-permissions', 'RoleController@rolePermissionUpdate')
             ->name('role-permissions.post');
