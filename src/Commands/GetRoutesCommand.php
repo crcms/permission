@@ -80,12 +80,13 @@ class GetRoutesCommand extends Command
         $permissions = $repository->all();
 
         $data = [];
-        $guard = ['route', 'action', 'status', 'created_at', 'updated_at'];
+        $guard = ['route', 'action', 'status', 'tag', 'created_at', 'updated_at'];
         if ($permissions->isEmpty()) {
             foreach ($routes as $key => $val) {
                 $data['route'] = $val['route'];
                 $data['action'] = $val['method'];
                 $data['status'] = CommonConstant::STATUS_NORMAL;
+                $data['tags'] = explode('.',$val['route'])[0];
                 $repository->setGuard($guard)->create($data);
             }
         } else {
@@ -103,7 +104,8 @@ class GetRoutesCommand extends Command
 
                 $data['route'] = $val['route'];
                 $data['action'] = $val['method'];
-                $data['status'] = CommonConstant::STATUS_FORBID;
+                $data['status'] = CommonConstant::STATUS_NORMAL;
+                $data['tags'] = explode('.',$val['route'])[0];
                 $repository->setGuard($guard)->create($data);
             }
         }
