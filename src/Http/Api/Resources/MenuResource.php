@@ -24,7 +24,7 @@ class MenuResource extends Resource
             'status_text' =>CommonConstant::STATUS_LIST[$this->status],
             'remark' => e($this->remark),
             'sort' => $this->sort,
-            'parent_id' => $this->parent_id ?? 0,
+            'parent_id' => $this->parent_id,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
             'children' => empty($this->children) ? [] : self::collection($this->children)->toArray($request),
