@@ -20,7 +20,7 @@ class RolePermissionUpdateHandler extends AbstractHandler
 
         $role = $repository->byIntIdOrFail($provider->get('id'));
 
-        $repository->syncRolePermissions($role, $provider->get('permissions'));
+        $repository->syncRolePermissions($role, $provider->get('permission'));
 
         return $role;
     }

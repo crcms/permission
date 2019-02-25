@@ -15,7 +15,7 @@ class PermissionRepository extends AbstractRepository
     /**
      * @var array
      */
-    protected $guard = ['title', 'route', 'action', 'remark', 'status'];
+    protected $guard = ['title', 'route', 'action', 'remark', 'status', 'tags'];
 
     /**
      * @return PermissionModel

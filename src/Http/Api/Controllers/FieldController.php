@@ -31,8 +31,7 @@ class FieldController extends Controller
     {
         return $this->response()->paginator(
             $this->app->make(ListHandler::class)->handle($provider),
-            $this->config->get('permission.resources.field', FieldResource::class),
-            ['only' => ['id', 'table_name', 'field_key', 'name', 'created_at']]
+            $this->config->get('permission.resources.field', FieldResource::class)
         );
     }
 

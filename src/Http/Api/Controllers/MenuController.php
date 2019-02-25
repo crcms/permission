@@ -33,8 +33,7 @@ class MenuController extends Controller
     {
         return $this->response()->collection(
             $this->app->make(ListHandler::class)->handle($provider),
-            $this->config->get('permission.resources.menu',MenuResource::class),
-            ['only' => ['id', 'title', 'url', 'route', 'icon', 'status_text', 'parent_id', 'created_at']]
+            $this->config->get('permission.resources.menu',MenuResource::class)
         );
     }
 
