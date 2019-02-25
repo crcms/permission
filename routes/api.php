@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api')->middleware([Barryvdh\Cors\HandleCors::class])->group(function () {
+Route::prefix('api')->group(function () {
     //权限
     Route::namespace('CrCms\Permission\Http\Api\Controllers')->group(function () {
         //菜单
