@@ -26,7 +26,8 @@ class MenuDataProviderTest extends TestCase
             'status' => 1,
             'sort' => mt_rand(1, 100),
             'pid' => mt_rand(1, 100),
-            'remark' => Str::random(255)
+            'remark' => Str::random(255),
+            'parent_id' => null,
         ];
 
         $provider = new StoreDataProvider();
@@ -36,6 +37,7 @@ class MenuDataProviderTest extends TestCase
 
         $v = new Validator($trans, $data, $rules, $messages);
         $v->setPresenceVerifier($verifier);
+
         $this->assertTrue($v->passes());
     }
 
@@ -50,7 +52,8 @@ class MenuDataProviderTest extends TestCase
             'status' => Str::random(20),
             'sort' => Str::random(10),
             'pid' => mt_rand(1, 100),
-            'remark' => Str::random(255)
+            'remark' => Str::random(255),
+//            'parent_id' => null,
         ];
 
         $provider = new UpdateDataProvider();

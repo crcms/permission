@@ -20,6 +20,8 @@ class UserPermissionTaskTest extends TestCase
 
     public function prepare($super = false,$forbid = true)
     {
+//        DB::table('roles')->truncate();
+//        DB::table('permissions')->truncate();
         $role1 = RoleModel::create([
             'name' => Str::random(10),
             'super' => $super ? CommonConstant::SUPER_YES : CommonConstant::SUPER_NO,
@@ -66,7 +68,8 @@ class UserPermissionTaskTest extends TestCase
         for ($i=0;$i<count($permissions);$i++) {
             $handler = new RolePermissionUpdateHandler();
             $var = 'role'.strval($i+1);
-            $handler->handle(new DataProvider(['id' => ${$var}->id,'permissions' => [$permissions[$i]]]));
+            $id = ${$var}->id;
+            $handler->handle(new DataProvider(['id' => $id,'permission' => [$permissions[$i]]]));
         }
 
         DB::table('user_roles')->delete();

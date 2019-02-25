@@ -20,7 +20,7 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'icon' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
-            'parent_id' => ['required', 'integer', function ($attribute, $value, $fail) {
+            'parent_id' => [ 'integer', function ($attribute, $value, $fail) {//'required',
                     if ((int)$value === (int)$this->get('menu')) {
                         throw new \InvalidArgumentException('父级id不能为本身');
                     }

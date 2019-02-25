@@ -20,7 +20,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'icon' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
-            'parent_id' => ['required', 'integer'],
+            //'parent_id' => ['required', 'integer'],
             'remark' => ['sometimes', 'string', 'max:255']
         ];
     }

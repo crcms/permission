@@ -24,6 +24,7 @@ class PermissionDataProviderTest extends TestCase
             'status' => 1,
             'title' => Str::random(10),
             'remark' => Str::random(255),
+            'tags' => 'abc',
         ];
 
         $provider = new StoreDataProvider();
@@ -46,6 +47,7 @@ class PermissionDataProviderTest extends TestCase
             'status' => 132,
             'title' => Str::random(10),
             'remark' => Str::random(255),
+            'tags' => 'abc',
         ];
 
         $provider = new StoreDataProvider();
