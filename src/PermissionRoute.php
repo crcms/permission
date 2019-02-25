@@ -16,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 class PermissionRoute
 {
     /**
+     * @var string
+     */
+    protected static $namespace = 'CrCms\Permission\Http\Api\Controllers\\';
+
+    /**
      * Menu route
      *
      * @return void
      */
     public static function menu(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers')
-            ->apiResource('menus', 'MenuController')
+        Route::apiResource('menus', static::$namespace.'MenuController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
@@ -34,8 +38,7 @@ class PermissionRoute
      */
     public static function role(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers')
-            ->apiResource('menus', 'RoleController')
+        Route::apiResource('menus', static::$namespace.'RoleController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
@@ -46,7 +49,7 @@ class PermissionRoute
      */
     public static function permission(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers',function(){
+        Route::namespace(static::$namespace)->group(function () {
             Route::apiResource('menus', 'PermissionController')
                 ->only(['index', 'show', 'store', 'update', 'destroy']);
             Route::get('permission-group-lists', 'PermissionController@groupLists')
@@ -61,8 +64,7 @@ class PermissionRoute
      */
     public static function constant(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers')
-            ->get('menus', 'ConstantController@getConstant')
+        Route::get('menus', static::$namespace.'ConstantController@getConstant')
             ->name('permission-constants.get');
     }
 
@@ -73,12 +75,11 @@ class PermissionRoute
      */
     public static function rolePermission(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers')->group(function () {
+        Route::namespace(static::$namespace)->group(function () {
             Route::post('role-permissions', 'RoleController@rolePermissionUpdate')
                 ->name('role-permissions.post');
             Route::get('role-permissions/{id}', 'RoleController@rolePermissionsList')
                 ->name('role-permissions.get');
-
 
             Route::post('role-menus', 'RoleController@roleMenusUpdate')
                 ->name('role-menus.post');
@@ -99,8 +100,7 @@ class PermissionRoute
      */
     public static function field(): void
     {
-        Route::namespace('CrCms\Permission\Http\Api\Controllers')
-            ->apiResource('fields', 'FieldController')
+        Route::apiResource('fields', static::$namespace.'FieldController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
