@@ -4,6 +4,7 @@ namespace CrCms\Permission\Handlers\Menu;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
+use CrCms\Permission\Repositories\Magic\MenuMagic;
 use CrCms\Permission\Repositories\MenuRepository;
 
 class ListHandler extends AbstractHandler
@@ -19,6 +20,6 @@ class ListHandler extends AbstractHandler
         /* @var MenuRepository $repository */
         $repository = $this->app->make(MenuRepository::class);
 
-        return $repository->all();
+        return $repository->magic(new MenuMagic($provider->all()))->all();
     }
 }
