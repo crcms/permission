@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - '7.2'
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+mysql:
+  database: crcms_permission
+  username: root
+  encoding: utf8
+
+env:
+  - DB_HOST=127.0.0.1
+  - DB_DATABASE=crcms_permission
+  - DB_USERNAME=root
+  - DB_PASSWORD=
+
+install:
+  - composer update
+
+before_script:
+  - mysql -e 'create database crcms_permission'
+
+script: vendor/bin/phpunit
