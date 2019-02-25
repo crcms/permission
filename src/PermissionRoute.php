@@ -38,7 +38,7 @@ class PermissionRoute
      */
     public static function role(): void
     {
-        Route::apiResource('menus', static::$namespace.'RoleController')
+        Route::apiResource('roles', static::$namespace.'RoleController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
@@ -50,7 +50,7 @@ class PermissionRoute
     public static function permission(): void
     {
         Route::namespace(static::$namespace)->group(function () {
-            Route::apiResource('menus', 'PermissionController')
+            Route::apiResource('permissions', 'PermissionController')
                 ->only(['index', 'show', 'store', 'update', 'destroy']);
             Route::get('permission-group-lists', 'PermissionController@groupLists')
                 ->name('permission-group-lists.get');
@@ -64,7 +64,7 @@ class PermissionRoute
      */
     public static function constant(): void
     {
-        Route::get('menus', static::$namespace.'ConstantController@getConstant')
+        Route::get('permission-constants', static::$namespace.'ConstantController@getConstant')
             ->name('permission-constants.get');
     }
 
