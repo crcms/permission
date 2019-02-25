@@ -36,10 +36,9 @@ class PermissionServiceProvider extends ModuleServiceProvider
         $this->aliasMiddleware();
     }
 
-//    protected function map(): void
-//    {
-//
-//    }
+    protected function map(): void
+    {
+    }
 
     /**
      * @return void
