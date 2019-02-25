@@ -18,6 +18,7 @@
   "require": {
     "php": "^7.2.4",
     "crcms/foundation": "dev-master",
+    "crcms/repository": "^2.1",
     "illuminate/config": "5.7.*",
     "illuminate/console": "5.7.*",
     "illuminate/container": "5.7.*",
