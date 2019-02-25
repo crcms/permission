@@ -3,11 +3,11 @@ language: php
 php:
   - '7.2'
 
-env:
-  - DB_HOST=127.0.0.1
-  - DB_DATABASE=crcms_permission
-  - DB_USERNAME=root
-  - DB_PASSWORD=
+#env:
+#  - DB_HOST=127.0.0.1
+#  - DB_DATABASE=default
+#  - DB_USERNAME=root
+#  - DB_PASSWORD=
 
 services:
   - mysql
@@ -17,7 +17,7 @@ cache:
     - $HOME/.composer/cache
 
 mysql:
-  database: crcms_permission
+  database: default
   username: root
   encoding: utf8
 
@@ -26,6 +26,6 @@ install:
   - composer update
 
 before_script:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS crcms_permission;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS default;'
 
 script: vendor/bin/phpunit
