@@ -18,11 +18,5 @@
         <log type="testdox-text" target="tests/logs/testing.log"/>
     </logging>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="DB_HOST" value="127.0.0.1"/>
-        <env name="DB_DATABASE" value="crcms_permission"/>
-        <env name="DB_USERNAME" value="root"/>
-        <env name="DB_PASSWORD" value=""/>
     </php>
 </phpunit>

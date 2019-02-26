@@ -19,7 +19,7 @@ class ConstantTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertInternalType('array', $result);
+        $this->assertEquals(true,is_array($result));
         $this->assertArrayHasKey('CommonConstant', $result);
     }
 }

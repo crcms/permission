@@ -53,7 +53,7 @@ class MenuDataProviderTest extends TestCase
             'sort' => Str::random(10),
             'pid' => mt_rand(1, 100),
             'remark' => Str::random(255),
-//            'parent_id' => null,
+            'parent_id' => null,
         ];
 
         $provider = new UpdateDataProvider();
