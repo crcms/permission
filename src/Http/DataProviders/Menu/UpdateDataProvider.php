@@ -20,11 +20,11 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'icon' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
-            'parent_id' => [ 'integer', function ($attribute, $value, $fail) {//'required',
-                    if ((int)$value === (int)$this->get('menu')) {
-                        throw new \InvalidArgumentException('父级id不能为本身');
-                    }
+            'parent_id' => ['required', 'nullable', 'integer', function ($attribute, $value, $fail) {
+                if ((int)$value === (int)$this->get('menu')) {
+                    throw new \InvalidArgumentException('父级id不能为本身');
                 }
+            }
             ],
             'remark' => ['sometimes', 'string', 'max:255']
         ];
