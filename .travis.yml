@@ -3,12 +3,6 @@ language: php
 php:
   - '7.2'
 
-env:
-  - DB_HOST=127.0.0.1
-  - DB_DATABASE=crcms_permission
-  - DB_USERNAME=root
-  - DB_PASSWORD=
-
 services:
   - mysql
 
@@ -17,6 +11,7 @@ cache:
     - $HOME/.composer/cache
 
 mysql:
+  host: 127.0.0.1
   database: crcms_permission
   username: root
   encoding: utf8
