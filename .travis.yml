@@ -3,6 +3,9 @@ language: php
 php:
   - '7.2'
 
+env:
+  - UNITENV=dist
+
 services:
   - mysql
 
@@ -10,17 +13,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-mysql:
-  host: 127.0.0.1
-  database: crcms_permission
-  username: root
-  encoding: utf8
-
-
 install:
   - composer update
 
 before_script:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS `crcms_permission`;'
 
-script: vendor/bin/phpunit
+script: vendor/bin/phpunit --configuration phpunit.xml.$UNITENV
