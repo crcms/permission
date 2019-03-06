@@ -3,9 +3,9 @@
 namespace CrCms\Permission\Handlers\Role;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
+use CrCms\Permission\Repositories\RoleRepository;
 use CrCms\Foundation\Handlers\Contracts\HandlerContract;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Repositories\RoleRepository;
 
 class RoleFieldsListHandler extends AbstractHandler implements HandlerContract
 {

@@ -4,5 +4,5 @@ namespace CrCms\Permission\Contracts;
 
 interface UserContract
 {
-    public function user(): UserContract;
+    public function user(): self;
 }

@@ -9,5 +9,4 @@ return [
         'role'  => \CrCms\Permission\Http\Api\Resources\RoleResource::class,
     ],
 
-
 ];

@@ -33,7 +33,7 @@ class UserPermissionMiddleware
 
         $boolean = $this->app->make(ValidateUserPermissionNodesTask::class)->handle($user);
 
-        if (!$boolean) {
+        if (! $boolean) {
             throw new AccessDeniedHttpException('暂无权限');
         }
 

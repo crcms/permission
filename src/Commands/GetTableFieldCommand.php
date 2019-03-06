@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Commands;
 
-use CrCms\Foundation\Helpers\InstanceConcern;
-use CrCms\Permission\Repositories\FieldRepository;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Collection;
+use CrCms\Foundation\Helpers\InstanceConcern;
+use CrCms\Permission\Repositories\FieldRepository;
 
 class GetTableFieldCommand extends Command
 {
@@ -57,7 +57,7 @@ class GetTableFieldCommand extends Command
     }
 
     /**
-     * 获取所有表的迁移信息
+     * 获取所有表的迁移信息.
      *
      * @return array
      */
@@ -80,7 +80,7 @@ class GetTableFieldCommand extends Command
         //格式化返回数据
         foreach ($tables as $key => $val) {
             //判断是否含有迁移表
-            $has_migrations = $this->config->get('database.migrations','migrations');
+            $has_migrations = $this->config->get('database.migrations', 'migrations');
 
             if (strtolower(substr($val, -10)) === strtolower(substr($has_migrations, -10))) {
                 continue;
@@ -101,8 +101,8 @@ class GetTableFieldCommand extends Command
     }
 
     /**
-     * 数据入库
-     * 
+     * 数据入库.
+     *
      * @param FieldRepository $repository
      * @param Collection $collect
      * @param $tables
@@ -141,7 +141,6 @@ class GetTableFieldCommand extends Command
                     $data['name'] = $_v['name'];
                     $repository->setGuard($guard)->create($data);
                 }
-
             }
         } catch (\Exception $e) {
             Log::error('字段数据入库填充错误'.$e->getMessage());

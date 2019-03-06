@@ -2,24 +2,19 @@
 
 namespace CrCms\Permission\Tests\Menu;
 
+use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Models\MenuModel;
+use CrCms\Permission\Tests\ApplicationTrait;
 use CrCms\Foundation\Transporters\DataProvider;
-use CrCms\Permission\Handlers\Menu\DestroyHandler;
 use CrCms\Permission\Handlers\Menu\StoreHandler;
 use CrCms\Permission\Handlers\Menu\UpdateHandler;
-use CrCms\Permission\Http\Api\Resources\MenuResource;
-use CrCms\Permission\Models\MenuModel;
+use CrCms\Permission\Handlers\Menu\DestroyHandler;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Kalnoy\Nestedset\Collection;
-use PHPUnit\Framework\TestCase;
 
 class MenuLevelTest extends TestCase
 {
     use ApplicationTrait;
-
 
     public function testParentStore()
     {
@@ -29,9 +24,7 @@ class MenuLevelTest extends TestCase
 
         $parentIds = [];
 
-        for ($i=0;$i<=3;$i++) {
-
-
+        for ($i = 0; $i <= 3; $i++) {
             $data = [
                 'title' => Str::random(10),
                 'url' => Str::random(10),
@@ -59,12 +52,11 @@ class MenuLevelTest extends TestCase
             }
         }
 
-
-        return ['result' => $result,'parent_ids' => $parentIds];
+        return ['result' => $result, 'parent_ids' => $parentIds];
     }
 
     /**
-     * testUpdate
+     * testUpdate.
      *
      * @depends testParentStore
      *
@@ -100,7 +92,7 @@ class MenuLevelTest extends TestCase
     }
 
     /**
-     * testDestroy
+     * testDestroy.
      *
      * @depends testUpdate
      *
@@ -124,11 +116,11 @@ class MenuLevelTest extends TestCase
         $handler = new DestroyHandler();
         $handler->handle(new DataProvider(['menu' => $parentId]));
 
-        $result = MenuModel::whereIn('id',$parentIds)->get();
+        $result = MenuModel::whereIn('id', $parentIds)->get();
 
         $result2 = MenuModel::find($temp->id);
 
-        $this->assertEquals(true,$result->isEmpty());
-        $this->assertInstanceOf(MenuModel::class,$result2);
+        $this->assertEquals(true, $result->isEmpty());
+        $this->assertInstanceOf(MenuModel::class, $result2);
     }
 }

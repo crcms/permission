@@ -2,28 +2,28 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
-use CrCms\Foundation\Helpers\InstanceConcern;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use CrCms\Foundation\Services\ResponseTrait;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Handlers\Role\DestroyHandler;
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Role\ListHandler;
-use CrCms\Permission\Handlers\Role\RoleFieldsListHandler;
-use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
-use CrCms\Permission\Handlers\Role\RoleMenusListHandler;
-use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
-use CrCms\Permission\Handlers\Role\RolePermissionsListHandler;
-use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
 use CrCms\Permission\Handlers\Role\ShowHandler;
 use CrCms\Permission\Handlers\Role\StoreHandler;
 use CrCms\Permission\Handlers\Role\UpdateHandler;
+use CrCms\Permission\Handlers\Role\DestroyHandler;
 use CrCms\Permission\Http\Api\Resources\RoleResource;
-use CrCms\Permission\Http\DataProviders\Role\RoleFieldsUpdateDataProvider;
-use CrCms\Permission\Http\DataProviders\Role\RoleMenusUpdateDataProvider;
-use CrCms\Permission\Http\DataProviders\Role\RolePermissionUpdateDataProvider;
+use CrCms\Permission\Handlers\Role\RoleMenusListHandler;
+use CrCms\Permission\Handlers\Role\RoleFieldsListHandler;
+use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
+use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
+use CrCms\Permission\Handlers\Role\RolePermissionsListHandler;
+use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
 use CrCms\Permission\Http\DataProviders\Role\StoreDataProvider;
 use CrCms\Permission\Http\DataProviders\Role\UpdateDataProvider;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
+use CrCms\Permission\Http\DataProviders\Role\RoleMenusUpdateDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\RoleFieldsUpdateDataProvider;
+use CrCms\Permission\Http\DataProviders\Role\RolePermissionUpdateDataProvider;
 
 class RoleController extends Controller
 {

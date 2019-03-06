@@ -8,7 +8,7 @@ use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 class SearchHandler extends AbstractHandler
 {
     /**
-     * 获取常量
+     * 获取常量.
      *
      * @param DataProviderContract $provider
      * @return array
@@ -17,7 +17,7 @@ class SearchHandler extends AbstractHandler
     public function handle(DataProviderContract $provider): array
     {
         //获取常量的相对路径
-        $path = __DIR__ . '/../../Repositories/Constants';
+        $path = __DIR__.'/../../Repositories/Constants';
 
         $files = scandir($path);
 
@@ -44,11 +44,12 @@ class SearchHandler extends AbstractHandler
         $className = $this->fixClassName($fileName);
         $constants = $this->getConstants($className);
         $listConstants = $this->listConstants($constants);
+
         return $listConstants;
     }
 
     /**
-     * 文件反射 获取常量
+     * 文件反射 获取常量.
      *
      * @param $className
      * @return array
@@ -57,11 +58,12 @@ class SearchHandler extends AbstractHandler
     protected function getConstants($className)
     {
         $reflect = new \ReflectionClass($className);
+
         return $reflect->getConstants();
     }
 
     /**
-     * 常量数据过滤
+     * 常量数据过滤.
      *
      * @param $constants
      * @return array
@@ -70,14 +72,15 @@ class SearchHandler extends AbstractHandler
     {
         return collect($constants)->filter(function ($value, $key) {
             return is_array($value);
-        })->map(function(&$item,$key){
+        })->map(function (&$item, $key) {
             krsort($item);
+
             return $item;
         })->toArray();
     }
 
     /**
-     * 格式化常量命名空间
+     * 格式化常量命名空间.
      *
      * @param $fileName
      * @return string
@@ -85,6 +88,7 @@ class SearchHandler extends AbstractHandler
     protected function fixClassName($fileName): string
     {
         $prefix = 'CrCms\Permission\Repositories\Constants\\';
-        return $prefix . substr($fileName, 0, -4);
+
+        return $prefix.substr($fileName, 0, -4);
     }
 }

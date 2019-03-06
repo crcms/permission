@@ -2,13 +2,13 @@
 
 namespace CrCms\Permission\Tests\Field;
 
-use CrCms\Permission\Http\DataProviders\Field\StoreDataProvider;
-use CrCms\Permission\Tests\ApplicationTrait;
 use Illuminate\Support\Str;
-use Illuminate\Translation\ArrayLoader;
-use Illuminate\Translation\Translator;
-use Illuminate\Validation\Validator;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Validation\Validator;
+use Illuminate\Translation\Translator;
+use Illuminate\Translation\ArrayLoader;
+use CrCms\Permission\Tests\ApplicationTrait;
+use CrCms\Permission\Http\DataProviders\Field\StoreDataProvider;
 
 class FieldDataProviderTest extends TestCase
 {

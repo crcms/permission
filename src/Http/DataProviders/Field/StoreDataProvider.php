@@ -26,7 +26,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
         return [
             'table_name' => '表名',
             'field_key' => '字段键',
-            'name' => '字段名'
+            'name' => '字段名',
         ];
     }
 }

@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Handlers\Field;
 
-use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Models\FieldModel;
+use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Permission\Repositories\FieldRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class ShowHandler extends AbstractHandler
 {

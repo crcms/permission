@@ -24,7 +24,7 @@ class RoleFieldsUpdateDataProvider extends AbstractValidateDataProvider
     {
         return [
             'id' => '角色id',
-            'field' => '字段id'
+            'field' => '字段id',
         ];
     }
 }

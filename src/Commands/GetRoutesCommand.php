@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Commands;
 
-use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Repositories\PermissionRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
+use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 class GetRoutesCommand extends Command
 {
@@ -48,7 +48,7 @@ class GetRoutesCommand extends Command
     }
 
     /**
-     * 获取所有路由
+     * 获取所有路由.
      *
      * @return array
      */
@@ -68,7 +68,7 @@ class GetRoutesCommand extends Command
     }
 
     /**
-     * 路由入库
+     * 路由入库.
      *
      * @param array $routes
      */
@@ -86,7 +86,7 @@ class GetRoutesCommand extends Command
                 $data['route'] = $val['route'];
                 $data['action'] = $val['method'];
                 $data['status'] = CommonConstant::STATUS_NORMAL;
-                $data['tags'] = explode('.',$val['route'])[0];
+                $data['tags'] = explode('.', $val['route'])[0];
                 $repository->setGuard($guard)->create($data);
             }
         } else {
@@ -105,7 +105,7 @@ class GetRoutesCommand extends Command
                 $data['route'] = $val['route'];
                 $data['action'] = $val['method'];
                 $data['status'] = CommonConstant::STATUS_NORMAL;
-                $data['tags'] = explode('.',$val['route'])[0];
+                $data['tags'] = explode('.', $val['route'])[0];
                 $repository->setGuard($guard)->create($data);
             }
         }

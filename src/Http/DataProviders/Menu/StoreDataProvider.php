@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\DataProviders\Menu;
 
-use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
 use Illuminate\Validation\Rule;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
+use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 
 class StoreDataProvider extends AbstractValidateDataProvider
 {
@@ -21,7 +21,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
             'parent_id' => ['present', 'nullable', 'integer'],
-            'remark' => ['sometimes', 'string', 'max:255']
+            'remark' => ['sometimes', 'string', 'max:255'],
         ];
     }
 

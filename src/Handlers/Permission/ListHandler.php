@@ -3,9 +3,9 @@
 namespace CrCms\Permission\Handlers\Permission;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Repositories\PermissionRepository;
 use Illuminate\Contracts\Pagination\Paginator;
+use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class ListHandler extends AbstractHandler
 {

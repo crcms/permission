@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Models;
 
+use Kalnoy\Nestedset\NodeTrait;
 use CrCms\Foundation\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kalnoy\Nestedset\NodeTrait;
 
 class MenuModel extends Model
 {

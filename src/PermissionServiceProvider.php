@@ -6,15 +6,14 @@ use CrCms\Foundation\Providers\ModuleServiceProvider;
 use CrCms\Permission\Http\Middleware\UserPermissionMiddleware;
 
 /**
- * Class PermissionServiceProvider
- * @package CrCms\Permission
+ * Class PermissionServiceProvider.
  */
 class PermissionServiceProvider extends ModuleServiceProvider
 {
     /**
      * @var string
      */
-    protected $basePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
+    protected $basePath = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
 
     /**
      * @var string
@@ -49,13 +48,12 @@ class PermissionServiceProvider extends ModuleServiceProvider
     }
 
     /**
-     * 权限事件监听
+     * 权限事件监听.
      *
      * @return void
      */
     protected function repositoryListeners(): void
     {
-
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Handlers\Permission;
 
-use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Models\PermissionModel;
+use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class UpdateHandler extends AbstractHandler
 {

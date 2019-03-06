@@ -2,17 +2,17 @@
 
 namespace CrCms\Permission\Tests\Field;
 
+use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Models\FieldModel;
+use CrCms\Permission\Tests\ApplicationTrait;
 use CrCms\Foundation\Transporters\DataProvider;
-use CrCms\Permission\Handlers\Field\DestroyHandler;
+use Illuminate\Pagination\LengthAwarePaginator;
 use CrCms\Permission\Handlers\Field\ListHandler;
 use CrCms\Permission\Handlers\Field\ShowHandler;
 use CrCms\Permission\Handlers\Field\StoreHandler;
 use CrCms\Permission\Handlers\Field\UpdateHandler;
-use CrCms\Permission\Models\FieldModel;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Handlers\Field\DestroyHandler;
 
 class FieldTest extends TestCase
 {

@@ -21,7 +21,7 @@ class PermissionRoute
     protected static $namespace = 'CrCms\Permission\Http\Api\Controllers\\';
 
     /**
-     * Menu route
+     * Menu route.
      *
      * @return void
      */
@@ -32,7 +32,7 @@ class PermissionRoute
     }
 
     /**
-     * Role route
+     * Role route.
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class PermissionRoute
     }
 
     /**
-     * Permission Route
+     * Permission Route.
      *
      * @return void
      */
@@ -58,7 +58,7 @@ class PermissionRoute
     }
 
     /**
-     * Constant route
+     * Constant route.
      *
      * @return void
      */
@@ -69,7 +69,7 @@ class PermissionRoute
     }
 
     /**
-     * Role relation permission
+     * Role relation permission.
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class PermissionRoute
     }
 
     /**
-     * Field route
+     * Field route.
      *
      * @return void
      */
@@ -105,7 +105,7 @@ class PermissionRoute
     }
 
     /**
-     * All route
+     * All route.
      *
      * @return void
      */

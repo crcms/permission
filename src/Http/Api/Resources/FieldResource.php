@@ -2,8 +2,8 @@
 
 namespace CrCms\Permission\Http\Api\Resources;
 
-use CrCms\Foundation\Resources\Resource;
 use Illuminate\Http\Request;
+use CrCms\Foundation\Resources\Resource;
 
 class FieldResource extends Resource
 {

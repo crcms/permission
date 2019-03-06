@@ -2,25 +2,24 @@
 
 namespace CrCms\Permission\Tests\Role;
 
-use CrCms\Foundation\Transporters\DataProvider;
-use CrCms\Permission\Handlers\Role\DestroyHandler;
-use CrCms\Permission\Handlers\Role\ListHandler;
-use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
-use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
-use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
-use CrCms\Permission\Handlers\Role\ShowHandler;
-use CrCms\Permission\Handlers\Role\StoreHandler;
-use CrCms\Permission\Handlers\Role\UpdateHandler;
-use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Models\RoleModel;
+use CrCms\Permission\Tests\ApplicationTrait;
+use CrCms\Foundation\Transporters\DataProvider;
+use CrCms\Permission\Handlers\Role\ListHandler;
+use CrCms\Permission\Handlers\Role\ShowHandler;
+use Illuminate\Pagination\LengthAwarePaginator;
+use CrCms\Permission\Handlers\Role\StoreHandler;
+use CrCms\Permission\Handlers\Role\UpdateHandler;
+use CrCms\Permission\Handlers\Role\DestroyHandler;
+use CrCms\Permission\Handlers\Role\RoleMenusUpdateHandler;
+use CrCms\Permission\Handlers\Role\RoleFieldsUpdateHandler;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
+use CrCms\Permission\Handlers\Role\RolePermissionUpdateHandler;
 
 /**
- * Class RoleTest
- * @package CrCms\Permission\Tests\Role
+ * Class RoleTest.
  */
 class RoleTest extends TestCase
 {
@@ -39,15 +38,14 @@ class RoleTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertInstanceOf(RoleModel::class,$result);
+        $this->assertInstanceOf(RoleModel::class, $result);
 
-        $this->assertEquals($data['name'],$result->name);
-        $this->assertEquals($data['super'],$result->super);
-        $this->assertEquals($data['status'],$result->status);
+        $this->assertEquals($data['name'], $result->name);
+        $this->assertEquals($data['super'], $result->super);
+        $this->assertEquals($data['status'], $result->status);
 
         return $result;
     }
-
 
     public function testList()
     {
@@ -101,11 +99,11 @@ class RoleTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertInstanceOf(RoleModel::class,$result);
+        $this->assertInstanceOf(RoleModel::class, $result);
 
-        $this->assertEquals($data['name'],$result->name);
-        $this->assertEquals($data['super'],$result->super);
-        $this->assertEquals($data['status'],$result->status);
+        $this->assertEquals($data['name'], $result->name);
+        $this->assertEquals($data['super'], $result->super);
+        $this->assertEquals($data['status'], $result->status);
     }
 
     /**
@@ -139,7 +137,7 @@ class RoleTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertInstanceOf(RoleModel::class,$result);
+        $this->assertInstanceOf(RoleModel::class, $result);
     }
 
     /**
@@ -156,7 +154,7 @@ class RoleTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertInstanceOf(RoleModel::class,$result);
+        $this->assertInstanceOf(RoleModel::class, $result);
     }
 
     /**
@@ -167,7 +165,7 @@ class RoleTest extends TestCase
         $handler = new DestroyHandler();
 
         $data = [
-            'role' => $role->id
+            'role' => $role->id,
         ];
 
         $result = $handler->handle(new DataProvider($data));

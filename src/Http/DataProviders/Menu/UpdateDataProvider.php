@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\DataProviders\Menu;
 
-use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
 use Illuminate\Validation\Rule;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
+use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 
 class UpdateDataProvider extends AbstractValidateDataProvider
 {
@@ -21,12 +21,12 @@ class UpdateDataProvider extends AbstractValidateDataProvider
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
             'parent_id' => ['required', 'nullable', 'integer', function ($attribute, $value, $fail) {
-                if ((int)$value === (int)$this->get('menu')) {
+                if ((int) $value === (int) $this->get('menu')) {
                     throw new \InvalidArgumentException('父级id不能为本身');
                 }
-            }
+            },
             ],
-            'remark' => ['sometimes', 'string', 'max:255']
+            'remark' => ['sometimes', 'string', 'max:255'],
         ];
     }
 

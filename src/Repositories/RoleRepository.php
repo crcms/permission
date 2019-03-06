@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Repositories;
 
-use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Repositories\Magic\RoleMagic;
-use CrCms\Repository\AbstractRepository;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use CrCms\Permission\Models\RoleModel;
+use CrCms\Repository\AbstractRepository;
+use CrCms\Permission\Repositories\Magic\RoleMagic;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 class RoleRepository extends AbstractRepository
 {
@@ -36,7 +36,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * syncRoleMenus
+     * syncRoleMenus.
      *
      * @param RoleModel $role
      * @param array $menus
@@ -48,7 +48,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * syncRolePermissions
+     * syncRolePermissions.
      *
      * @param RoleModel $role
      * @param array $permissions
@@ -60,7 +60,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * syncRoleFields
+     * syncRoleFields.
      *
      * @param RoleModel $role
      * @param array $fields
@@ -72,7 +72,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * rolePermissions
+     * rolePermissions.
      *
      * @param RoleModel $role
      * @return Collection
@@ -83,7 +83,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * roleFields
+     * roleFields.
      *
      * @param RoleModel $role
      * @return Collection
@@ -94,7 +94,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * roleMenus
+     * roleMenus.
      *
      * @param RoleModel $role
      * @return Collection
@@ -105,7 +105,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * containsSuperRole
+     * containsSuperRole.
      *
      * @param Collection $roles
      * @return bool
@@ -118,7 +118,7 @@ class RoleRepository extends AbstractRepository
     }
 
     /**
-     * filterNotNormalRole
+     * filterNotNormalRole.
      *
      * @param Collection $roles
      * @return Collection

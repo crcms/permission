@@ -2,13 +2,13 @@
 
 namespace CrCms\Permission\Repositories;
 
-use CrCms\Permission\Models\PermissionModel;
-use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Repositories\Magic\PermissionMagic;
-use CrCms\Repository\AbstractRepository;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use CrCms\Permission\Models\RoleModel;
+use CrCms\Repository\AbstractRepository;
+use CrCms\Permission\Models\PermissionModel;
+use CrCms\Permission\Repositories\Magic\PermissionMagic;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 class PermissionRepository extends AbstractRepository
 {
@@ -41,7 +41,7 @@ class PermissionRepository extends AbstractRepository
      */
     public function allByStatusNormal(): Collection
     {
-        return $this->where('status',CommonConstant::STATUS_NORMAL)
+        return $this->where('status', CommonConstant::STATUS_NORMAL)
             ->orderBy('id', 'desc')
             ->get();
     }

@@ -24,7 +24,7 @@ class RoleMenusUpdateDataProvider extends AbstractValidateDataProvider
     {
         return [
             'id' => '角色id',
-            'menu' => '菜单id'
+            'menu' => '菜单id',
         ];
     }
 }

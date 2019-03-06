@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\DataProviders\Permission;
 
-use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
 use Illuminate\Validation\Rule;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
+use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 
 class StoreDataProvider extends AbstractValidateDataProvider
 {
@@ -34,7 +34,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'status' => '状态',
             'title' => '权限标题',
             'remark' => '备注',
-            'tags' => '标签'
+            'tags' => '标签',
         ];
     }
 }

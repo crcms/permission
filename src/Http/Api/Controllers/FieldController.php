@@ -2,22 +2,22 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
-use CrCms\Foundation\Helpers\InstanceConcern;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use CrCms\Foundation\Services\ResponseTrait;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Handlers\Field\DestroyHandler;
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Field\ListHandler;
 use CrCms\Permission\Handlers\Field\ShowHandler;
 use CrCms\Permission\Handlers\Field\StoreHandler;
 use CrCms\Permission\Handlers\Field\UpdateHandler;
+use CrCms\Permission\Handlers\Field\DestroyHandler;
 use CrCms\Permission\Http\Api\Resources\FieldResource;
 use CrCms\Permission\Http\DataProviders\Field\StoreDataProvider;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Http\DataProviders\Field\UpdateDataProvider;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
 
 /**
- * Class FieldController
+ * Class FieldController.
  */
 class FieldController extends Controller
 {
