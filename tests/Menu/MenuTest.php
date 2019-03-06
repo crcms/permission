@@ -2,22 +2,21 @@
 
 namespace CrCms\Permission\Tests\Menu;
 
-use CrCms\Foundation\Transporters\DataProvider;
-use CrCms\Permission\Handlers\Menu\DestroyHandler;
-use CrCms\Permission\Handlers\Menu\ListHandler;
-use CrCms\Permission\Handlers\Menu\SearchHandler;
-use CrCms\Permission\Handlers\Menu\ShowHandler;
-use CrCms\Permission\Handlers\Menu\StoreHandler;
-use CrCms\Permission\Handlers\Menu\UpdateHandler;
-use CrCms\Permission\Models\MenuModel;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Tests\ApplicationTrait;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Models\MenuModel;
+use CrCms\Permission\Tests\ApplicationTrait;
+use CrCms\Foundation\Transporters\DataProvider;
+use CrCms\Permission\Handlers\Menu\ListHandler;
+use CrCms\Permission\Handlers\Menu\ShowHandler;
+use CrCms\Permission\Handlers\Menu\StoreHandler;
+use CrCms\Permission\Handlers\Menu\SearchHandler;
+use CrCms\Permission\Handlers\Menu\UpdateHandler;
+use CrCms\Permission\Handlers\Menu\DestroyHandler;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 /**
- * Class MenuTest
- * @package CrCms\Permission\Tests\Menu
+ * Class MenuTest.
  */
 class MenuTest extends TestCase
 {
@@ -102,6 +101,7 @@ class MenuTest extends TestCase
 //        $this->assertInternalType('array', $result);
 //    }
 //
+
     /**
      * @depends testStore
      */

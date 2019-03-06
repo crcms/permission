@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\DataProviders\Role;
 
-use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
 use Illuminate\Validation\Rule;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
+use CrCms\Foundation\Transporters\AbstractValidateDataProvider;
 
 class StoreDataProvider extends AbstractValidateDataProvider
 {

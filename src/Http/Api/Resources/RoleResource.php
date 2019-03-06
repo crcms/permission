@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\Api\Resources;
 
+use Illuminate\Http\Request;
 use CrCms\Foundation\Resources\Resource;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
-use Illuminate\Http\Request;
 
 class RoleResource extends Resource
 {
@@ -32,6 +32,6 @@ class RoleResource extends Resource
      */
     protected function includePermissions(): PermissionResource
     {
-        return PermissionResource::collection($this->belongsToManyPermissions)->only(['title','route']);
+        return PermissionResource::collection($this->belongsToManyPermissions)->only(['title', 'route']);
     }
 }

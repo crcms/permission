@@ -3,9 +3,9 @@
 namespace CrCms\Permission\Tasks;
 
 use CrCms\Foundation\Tasks\AbstractTask;
+use CrCms\Permission\Repositories\RoleRepository;
 use CrCms\Foundation\Tasks\Contracts\TaskContract;
 use CrCms\Permission\Contracts\UserRoleRelationContract;
-use CrCms\Permission\Repositories\RoleRepository;
 
 class UserRoleTask extends AbstractTask implements TaskContract
 {

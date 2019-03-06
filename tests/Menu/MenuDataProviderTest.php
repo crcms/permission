@@ -2,14 +2,14 @@
 
 namespace CrCms\Permission\Tests\Menu;
 
+use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
+use Illuminate\Validation\Validator;
+use Illuminate\Translation\Translator;
+use Illuminate\Translation\ArrayLoader;
+use CrCms\Permission\Tests\ApplicationTrait;
 use CrCms\Permission\Http\DataProviders\Menu\StoreDataProvider;
 use CrCms\Permission\Http\DataProviders\Menu\UpdateDataProvider;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Support\Str;
-use Illuminate\Translation\ArrayLoader;
-use Illuminate\Translation\Translator;
-use Illuminate\Validation\Validator;
-use PHPUnit\Framework\TestCase;
 
 class MenuDataProviderTest extends TestCase
 {

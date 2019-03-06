@@ -9,7 +9,7 @@ use CrCms\Repository\Drivers\Eloquent\QueryRelate;
 class RoleMagic extends AbstractMagic implements QueryMagic
 {
     /**
-     * 搜索角色名称
+     * 搜索角色名称.
      *
      * @param QueryRelate $query
      * @param string $name
@@ -29,6 +29,6 @@ class RoleMagic extends AbstractMagic implements QueryMagic
      */
     public function byStatus(QueryRelate $query, string $status): QueryRelate
     {
-        return $query->where('status', (int)$status);
+        return $query->where('status', (int) $status);
     }
 }

@@ -3,10 +3,9 @@
 namespace CrCms\Permission\Repositories;
 
 use CrCms\Permission\Models\FieldModel;
-use CrCms\Permission\Repositories\Magic\FieldMagic;
 use CrCms\Repository\AbstractRepository;
+use CrCms\Permission\Repositories\Magic\FieldMagic;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
 
 class FieldRepository extends AbstractRepository
 {

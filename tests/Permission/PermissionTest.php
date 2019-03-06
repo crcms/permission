@@ -2,18 +2,18 @@
 
 namespace CrCms\Permission\Tests\Permission;
 
+use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Models\PermissionModel;
+use CrCms\Permission\Tests\ApplicationTrait;
 use CrCms\Foundation\Transporters\DataProvider;
-use CrCms\Permission\Handlers\Permission\DestroyHandler;
+use Illuminate\Pagination\LengthAwarePaginator;
 use CrCms\Permission\Handlers\Permission\ListHandler;
 use CrCms\Permission\Handlers\Permission\ShowHandler;
 use CrCms\Permission\Handlers\Permission\StoreHandler;
 use CrCms\Permission\Handlers\Permission\UpdateHandler;
-use CrCms\Permission\Models\PermissionModel;
+use CrCms\Permission\Handlers\Permission\DestroyHandler;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase;
 
 class PermissionTest extends TestCase
 {

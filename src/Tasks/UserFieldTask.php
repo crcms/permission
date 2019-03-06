@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Tasks;
 
-use CrCms\Foundation\Tasks\AbstractTask;
-use CrCms\Foundation\Tasks\Contracts\TaskContract;
-use CrCms\Permission\Contracts\UserRoleRelationContract;
 use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\FieldRepository;
+use CrCms\Foundation\Tasks\AbstractTask;
 use CrCms\Permission\Repositories\RoleRepository;
+use CrCms\Foundation\Tasks\Contracts\TaskContract;
+use CrCms\Permission\Repositories\FieldRepository;
+use CrCms\Permission\Contracts\UserRoleRelationContract;
 
 class UserFieldTask extends AbstractTask implements TaskContract
 {
@@ -30,7 +30,7 @@ class UserFieldTask extends AbstractTask implements TaskContract
         }
 
         return $repository->filterNotNormalRole($roles)->map(function (RoleModel $role) {
-                return $role->belongsToManyFields()->get();
-            })->flatten()->unique('id')->toArray();
+            return $role->belongsToManyFields()->get();
+        })->flatten()->unique('id')->toArray();
     }
 }

@@ -19,8 +19,8 @@ $app->alias('events', \Illuminate\Events\Dispatcher::class);
 //$app->alias('cache', \Illuminate\Contracts\Cache\Factory::class);
 //$app->alias('cache.store', \Illuminate\Cache\Repository::class);
 //$app->alias('cache.store',  \Illuminate\Contracts\Cache\Repository::class);
-$app->alias('validator',  \Illuminate\Validation\Factory::class);
-$app->alias('validator',  \Illuminate\Contracts\Validation\Factory::class);
+$app->alias('validator', \Illuminate\Validation\Factory::class);
+$app->alias('validator', \Illuminate\Contracts\Validation\Factory::class);
 
 //config
 $app->singleton('config', function () use ($config) {
@@ -36,11 +36,11 @@ $app->singleton('config', function () use ($config) {
             'connections' => [
                 'mysql' => [
                     'driver' => 'mysql',
-                    'host' => env('DB_HOST','mysql'),
+                    'host' => env('DB_HOST', 'mysql'),
                     'port' => '3306',
-                    'database' => env('DB_DATABASE','default'),
-                    'username' => env('DB_USERNAME','root'),
-                    'password' => env('DB_PASSWORD','root'),
+                    'database' => env('DB_DATABASE', 'default'),
+                    'username' => env('DB_USERNAME', 'root'),
+                    'password' => env('DB_PASSWORD', 'root'),
                     'charset' => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
                     'prefix' => '',
@@ -110,16 +110,15 @@ function app_path($path = null)
 //{
 //    return is_null($path) ? __DIR__ : __DIR__.'/'.$path;
 //}
-function app() {
+function app()
+{
     return \Illuminate\Container\Container::getInstance();
 }
-
 
 //function config($key,$default = null)
 //{
 //    \Illuminate\Container\Container::getInstance()->make('config')->get($key,$default);
 //}
-
 
 //function trans($key = null, $replace = [], $locale = null)
 //{
@@ -130,8 +129,7 @@ function app() {
 $request = Mockery::mock('request');
 $request->shouldReceive('all')->andReturn([]);
 
-$app->instance('request',$request);
-
+$app->instance('request', $request);
 
 //service providers
 $providers = [
@@ -165,14 +163,13 @@ foreach ($providers as $provider) {
     if (method_exists($provider, 'boot')) {
         $provider->boot();
     }
-
 }
 
-if (!$app->make('migrator')->getRepository()->repositoryExists()) {
+if (! $app->make('migrator')->getRepository()->repositoryExists()) {
     $app->make('migrator')->getRepository()->createRepository();
 }
-$app->make('migrator')->reset([__DIR__ . '/../database/migrations']);
-$app->make('migrator')->run(__DIR__ . '/../database/migrations');
+$app->make('migrator')->reset([__DIR__.'/../database/migrations']);
+$app->make('migrator')->run(__DIR__.'/../database/migrations');
 
 //$app->make(DatabaseSeeder::class)->run();
 

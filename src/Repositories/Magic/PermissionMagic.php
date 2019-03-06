@@ -9,7 +9,7 @@ use CrCms\Repository\Drivers\Eloquent\QueryRelate;
 class PermissionMagic extends AbstractMagic implements QueryMagic
 {
     /**
-     * 搜索权限标题
+     * 搜索权限标题.
      *
      * @param QueryRelate $query
      * @param string $title
@@ -21,7 +21,7 @@ class PermissionMagic extends AbstractMagic implements QueryMagic
     }
 
     /**
-     * 搜索请求方法
+     * 搜索请求方法.
      *
      * @param QueryRelate $query
      * @param string $action
@@ -41,6 +41,6 @@ class PermissionMagic extends AbstractMagic implements QueryMagic
      */
     public function byStatus(QueryRelate $query, string $status): QueryRelate
     {
-        return $query->where('status', (int)$status);
+        return $query->where('status', (int) $status);
     }
 }

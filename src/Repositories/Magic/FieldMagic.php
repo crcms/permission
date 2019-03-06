@@ -9,7 +9,7 @@ use CrCms\Repository\Drivers\Eloquent\QueryRelate;
 class FieldMagic extends AbstractMagic implements QueryMagic
 {
     /**
-     * 搜索字段名称
+     * 搜索字段名称.
      *
      * @param QueryRelate $query
      * @param string $name
@@ -21,7 +21,7 @@ class FieldMagic extends AbstractMagic implements QueryMagic
     }
 
     /**
-     * 搜索字段
+     * 搜索字段.
      *
      * @param QueryRelate $query
      * @param string $fieldKey
@@ -33,7 +33,7 @@ class FieldMagic extends AbstractMagic implements QueryMagic
     }
 
     /**
-     * 搜索字段表名
+     * 搜索字段表名.
      *
      * @param QueryRelate $query
      * @param string $tableName

@@ -2,10 +2,9 @@
 
 namespace CrCms\Permission\Tests;
 
-
+use Illuminate\Database\Eloquent\Model;
 use CrCms\Permission\Contracts\UserRoleRelationContract;
 use CrCms\Permission\Models\Traits\UserRoleRelationTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class UserModel extends Model implements UserRoleRelationContract
 {

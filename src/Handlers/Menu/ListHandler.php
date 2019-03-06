@@ -3,14 +3,14 @@
 namespace CrCms\Permission\Handlers\Menu;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Repositories\Magic\MenuMagic;
 use CrCms\Permission\Repositories\MenuRepository;
+use CrCms\Permission\Repositories\Magic\MenuMagic;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class ListHandler extends AbstractHandler
 {
     /**
-     * handle
+     * handle.
      *
      * @param DataProviderContract $provider
      * @return \Illuminate\Support\Collection|mixed

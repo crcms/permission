@@ -2,11 +2,11 @@
 
 namespace CrCms\Permission\Repositories;
 
+use Illuminate\Support\Collection;
 use CrCms\Permission\Models\MenuModel;
 use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\Constants\CommonConstant;
 use CrCms\Repository\AbstractRepository;
-use Illuminate\Support\Collection;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 class MenuRepository extends AbstractRepository
 {
@@ -24,7 +24,7 @@ class MenuRepository extends AbstractRepository
     }
 
     /**
-     * descendantAndSelfById
+     * descendantAndSelfById.
      *
      * @param int $id
      * @return Collection
@@ -35,7 +35,7 @@ class MenuRepository extends AbstractRepository
     }
 
     /**
-     * allToTree
+     * allToTree.
      *
      * @return Collection
      */
@@ -49,7 +49,7 @@ class MenuRepository extends AbstractRepository
      */
     public function allByStatusNormal(): Collection
     {
-        return $this->where('status',CommonConstant::STATUS_NORMAL)->get()->toTree();
+        return $this->where('status', CommonConstant::STATUS_NORMAL)->get()->toTree();
     }
 
     /**

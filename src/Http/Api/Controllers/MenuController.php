@@ -2,23 +2,22 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
-use CrCms\Foundation\Helpers\InstanceConcern;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use CrCms\Foundation\Services\ResponseTrait;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
-use CrCms\Permission\Handlers\Menu\DestroyHandler;
+use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Menu\ListHandler;
 use CrCms\Permission\Handlers\Menu\ShowHandler;
 use CrCms\Permission\Handlers\Menu\StoreHandler;
 use CrCms\Permission\Handlers\Menu\UpdateHandler;
+use CrCms\Permission\Handlers\Menu\DestroyHandler;
 use CrCms\Permission\Http\Api\Resources\MenuResource;
 use CrCms\Permission\Http\DataProviders\Menu\StoreDataProvider;
 use CrCms\Permission\Http\DataProviders\Menu\UpdateDataProvider;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 /**
- * Class MenuController
- * @package CrCms\Permission\Http\Api\Controllers
+ * Class MenuController.
  */
 class MenuController extends Controller
 {
@@ -33,7 +32,7 @@ class MenuController extends Controller
     {
         return $this->response()->collection(
             $this->app->make(ListHandler::class)->handle($provider),
-            $this->config->get('permission.resources.menu',MenuResource::class)
+            $this->config->get('permission.resources.menu', MenuResource::class)
         );
     }
 
@@ -46,7 +45,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(ShowHandler::class)->handle($provider),
-            $this->config->get('permission.resources.menu',MenuResource::class)
+            $this->config->get('permission.resources.menu', MenuResource::class)
         );
     }
 
@@ -58,7 +57,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(StoreHandler::class)->handle($request),
-            $this->config->get('permission.resources.menu',MenuResource::class)
+            $this->config->get('permission.resources.menu', MenuResource::class)
         );
     }
 
@@ -70,7 +69,7 @@ class MenuController extends Controller
     {
         return $this->response()->resource(
             $this->app->make(UpdateHandler::class)->handle($request),
-            $this->config->get('permission.resources.menu',MenuResource::class)
+            $this->config->get('permission.resources.menu', MenuResource::class)
         );
     }
 

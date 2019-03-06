@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Tests\Role;
 
-use CrCms\Permission\Http\DataProviders\Role\StoreDataProvider;
-use CrCms\Permission\Tests\ApplicationTrait;
-use Illuminate\Translation\ArrayLoader;
-use Illuminate\Translation\Translator;
-use Illuminate\Validation\Validator;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Validation\Validator;
+use Illuminate\Translation\Translator;
+use Illuminate\Translation\ArrayLoader;
+use CrCms\Permission\Tests\ApplicationTrait;
+use CrCms\Permission\Http\DataProviders\Role\StoreDataProvider;
 
 class RoleDataProviderTest extends TestCase
 {
@@ -30,7 +30,6 @@ class RoleDataProviderTest extends TestCase
         $v = new Validator($trans, $data, $rules, $messages);
         $v->setPresenceVerifier($verifier);
         $this->assertTrue($v->passes());
-
     }
 
     public function testStoreOrUpdateDataProviderFail()

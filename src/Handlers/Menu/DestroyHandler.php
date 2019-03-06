@@ -3,8 +3,8 @@
 namespace CrCms\Permission\Handlers\Menu;
 
 use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Repositories\MenuRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class DestroyHandler extends AbstractHandler
 {

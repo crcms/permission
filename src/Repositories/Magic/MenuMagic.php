@@ -9,7 +9,7 @@ use CrCms\Repository\Drivers\Eloquent\QueryRelate;
 class MenuMagic extends AbstractMagic implements QueryMagic
 {
     /**
-     * 菜单标题搜索
+     * 菜单标题搜索.
      *
      * @param QueryRelate $query
      * @param string $title
@@ -21,7 +21,7 @@ class MenuMagic extends AbstractMagic implements QueryMagic
     }
 
     /**
-     * 状态搜索
+     * 状态搜索.
      *
      * @param QueryRelate $query
      * @param string $status
@@ -29,6 +29,6 @@ class MenuMagic extends AbstractMagic implements QueryMagic
      */
     public function byStatus(QueryRelate $query, string $status): QueryRelate
     {
-        return $query->where('status', (int)$status);
+        return $query->where('status', (int) $status);
     }
 }

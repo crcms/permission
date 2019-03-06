@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Tasks;
 
+use Illuminate\Support\Facades\Route;
 use CrCms\Foundation\Tasks\AbstractTask;
 use CrCms\Foundation\Tasks\Contracts\TaskContract;
 use CrCms\Permission\Contracts\UserRoleRelationContract;
-use Illuminate\Support\Facades\Route;
 
 class ValidateUserPermissionNodesTask extends AbstractTask implements TaskContract
 {
@@ -23,7 +23,7 @@ class ValidateUserPermissionNodesTask extends AbstractTask implements TaskContra
         //获取当前用户的权限节点
         $permissions = $this->app->make(UserPermissionTask::class)->handle($user);
 
-        if (!in_array($currentRoute, $permissions)) {
+        if (! in_array($currentRoute, $permissions)) {
             return false;
         }
 

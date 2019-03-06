@@ -2,15 +2,15 @@
 
 namespace CrCms\Permission\Handlers\Role;
 
-use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Models\RoleModel;
+use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Permission\Repositories\RoleRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class ShowHandler extends AbstractHandler
 {
     /**
-     * handle
+     * handle.
      *
      * @param DataProviderContract $provider
      * @return RoleModel

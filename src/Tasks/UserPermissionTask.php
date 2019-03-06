@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Tasks;
 
-use CrCms\Foundation\Tasks\AbstractTask;
-use CrCms\Foundation\Tasks\Contracts\TaskContract;
-use CrCms\Permission\Contracts\UserRoleRelationContract;
 use CrCms\Permission\Models\RoleModel;
-use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Foundation\Tasks\AbstractTask;
 use CrCms\Permission\Repositories\RoleRepository;
+use CrCms\Foundation\Tasks\Contracts\TaskContract;
+use CrCms\Permission\Repositories\PermissionRepository;
+use CrCms\Permission\Contracts\UserRoleRelationContract;
 
 class UserPermissionTask extends AbstractTask implements TaskContract
 {
@@ -30,7 +30,7 @@ class UserPermissionTask extends AbstractTask implements TaskContract
             return $permissionRepository->allByStatusNormal()->pluck('route')->toArray();
         }
 
-        return $repository->filterNotNormalRole($roles)->map(function(RoleModel $role) use($permissionRepository){
+        return $repository->filterNotNormalRole($roles)->map(function (RoleModel $role) use ($permissionRepository) {
             return $permissionRepository->allByRole($role);
         })->flatten()->unique('route')->pluck('route')->toArray();
     }

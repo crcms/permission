@@ -2,9 +2,9 @@
 
 namespace CrCms\Permission\Http\Api\Resources;
 
+use Illuminate\Http\Request;
 use CrCms\Foundation\Resources\Resource;
 use CrCms\Permission\Repositories\Constants\CommonConstant;
-use Illuminate\Http\Request;
 
 class MenuResource extends Resource
 {

@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Handlers\Menu;
 
-use CrCms\Foundation\Handlers\AbstractHandler;
-use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Models\MenuModel;
+use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Permission\Repositories\MenuRepository;
+use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 
 class UpdateHandler extends AbstractHandler
 {

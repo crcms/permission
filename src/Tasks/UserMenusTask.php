@@ -2,12 +2,12 @@
 
 namespace CrCms\Permission\Tasks;
 
-use CrCms\Foundation\Tasks\AbstractTask;
-use CrCms\Foundation\Tasks\Contracts\TaskContract;
-use CrCms\Permission\Contracts\UserRoleRelationContract;
 use CrCms\Permission\Models\RoleModel;
+use CrCms\Foundation\Tasks\AbstractTask;
 use CrCms\Permission\Repositories\MenuRepository;
 use CrCms\Permission\Repositories\RoleRepository;
+use CrCms\Foundation\Tasks\Contracts\TaskContract;
+use CrCms\Permission\Contracts\UserRoleRelationContract;
 
 class UserMenusTask extends AbstractTask implements TaskContract
 {

@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Tests\Constant;
 
+use PHPUnit\Framework\TestCase;
+use CrCms\Permission\Tests\ApplicationTrait;
 use CrCms\Foundation\Transporters\DataProvider;
 use CrCms\Permission\Handlers\Constant\SearchHandler;
-use CrCms\Permission\Tests\ApplicationTrait;
-use PHPUnit\Framework\TestCase;
 
 class ConstantTest extends TestCase
 {
@@ -19,7 +19,7 @@ class ConstantTest extends TestCase
 
         $result = $handler->handle(new DataProvider($data));
 
-        $this->assertEquals(true,is_array($result));
+        $this->assertEquals(true, is_array($result));
         $this->assertArrayHasKey('CommonConstant', $result);
     }
 }
