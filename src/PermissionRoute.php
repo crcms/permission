@@ -18,7 +18,7 @@ class PermissionRoute
     /**
      * @var string
      */
-    protected static $namespace = 'CrCms\Permission\Http\Api\Controllers\\';
+    protected static $namespace = 'CrCms\Permission\Http\Api\Controllers';
 
     /**
      * Menu route.
@@ -27,7 +27,7 @@ class PermissionRoute
      */
     public static function menu(): void
     {
-        Route::apiResource('menus', static::$namespace.'MenuController')
+        Route::apiResource('menus', static::$namespace.'\\MenuController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
@@ -38,7 +38,7 @@ class PermissionRoute
      */
     public static function role(): void
     {
-        Route::apiResource('roles', static::$namespace.'RoleController')
+        Route::apiResource('roles', static::$namespace.'\\RoleController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
@@ -64,7 +64,7 @@ class PermissionRoute
      */
     public static function constant(): void
     {
-        Route::get('permission-constants', static::$namespace.'ConstantController@getConstant')
+        Route::get('permission-constants', static::$namespace.'\\ConstantController@getConstant')
             ->name('permission-constants.get');
     }
 
@@ -100,7 +100,7 @@ class PermissionRoute
      */
     public static function field(): void
     {
-        Route::apiResource('fields', static::$namespace.'FieldController')
+        Route::apiResource('fields', static::$namespace.'\\FieldController')
             ->only(['index', 'show', 'store', 'update', 'destroy']);
     }
 
