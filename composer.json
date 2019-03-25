@@ -17,7 +17,7 @@
   "license": "MIT",
   "require": {
     "php": "^7.2.4",
-    "crcms/foundation": "^0.0.3",
+    "crcms/foundation": "~0.0",
     "crcms/repository": "^2.1",
     "illuminate/config": "^5.7",
     "illuminate/console": "^5.7",
