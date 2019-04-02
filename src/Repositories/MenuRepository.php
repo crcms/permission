@@ -49,7 +49,9 @@ class MenuRepository extends AbstractRepository
      */
     public function allByStatusNormal(): Collection
     {
-        return $this->where('status', CommonConstant::STATUS_NORMAL)->get()->toTree();
+        return $this->where('status', CommonConstant::STATUS_NORMAL)
+            ->orderBy('sort', 'desc')
+            ->get()->toTree();
     }
 
     /**
@@ -58,8 +60,10 @@ class MenuRepository extends AbstractRepository
      */
     public function allByRole(RoleModel $role): Collection
     {
-        return $role->belongsToManyMenus()->get()->filter(function (MenuModel $menu) {
-            return $menu->status === CommonConstant::STATUS_NORMAL;
-        })->toTree();
+        return $role->belongsToManyMenus()
+            ->orderBy('sort', 'desc')
+            ->get()->filter(function (MenuModel $menu) {
+                return $menu->status === CommonConstant::STATUS_NORMAL;
+            })->toTree();
     }
 }
