@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 /**
  * Class PermissionServiceProvider.
  */
-class PermissionServiceProvider extends ModuleServiceProvider implements DeferrableProvider
+class PermissionServiceProvider extends ModuleServiceProvider
 {
     /**
      * @var string
