@@ -38,6 +38,7 @@
   },
   "autoload": {
     "classmap": [
+      "database/seeds"
     ],
     "psr-4": {
       "CrCms\\Permission\\": "src/"

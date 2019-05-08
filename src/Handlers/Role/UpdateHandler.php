@@ -18,6 +18,6 @@ class UpdateHandler extends AbstractHandler
         /* @var RoleRepository $repository */
         $repository = $this->app->make(RoleRepository::class);
 
-        return $repository->update($provider->all(), $provider->get('role'));
+        return $repository->update(array_merge($provider->all(), ['super' => CommonConstant::SUPER_NO]), $provider->get('role'));
     }
 }
