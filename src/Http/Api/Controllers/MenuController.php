@@ -2,10 +2,8 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Controllers\AbstractController;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
-use CrCms\Foundation\Services\ResponseTrait;
-use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Menu\ListHandler;
 use CrCms\Permission\Handlers\Menu\ShowHandler;
 use CrCms\Permission\Handlers\Menu\StoreHandler;
@@ -19,10 +17,8 @@ use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 /**
  * Class MenuController.
  */
-class MenuController extends Controller
+class MenuController extends AbstractController
 {
-    use ResponseTrait, InstanceConcern;
-
     /**
      * @param DataProviderContract $provider
      * @return JsonResponse

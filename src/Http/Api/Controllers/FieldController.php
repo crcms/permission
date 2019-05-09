@@ -2,9 +2,8 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Controllers\AbstractController;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
-use CrCms\Foundation\Services\ResponseTrait;
 use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Field\ListHandler;
 use CrCms\Permission\Handlers\Field\ShowHandler;
@@ -19,10 +18,8 @@ use CrCms\Permission\Http\DataProviders\Field\UpdateDataProvider;
 /**
  * Class FieldController.
  */
-class FieldController extends Controller
+class FieldController extends AbstractController
 {
-    use ResponseTrait, InstanceConcern;
-
     /**
      * @param DataProviderContract $provider
      * @return JsonResponse

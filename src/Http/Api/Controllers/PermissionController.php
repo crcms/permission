@@ -2,10 +2,8 @@
 
 namespace CrCms\Permission\Http\Api\Controllers;
 
+use CrCms\Foundation\Controllers\AbstractController;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
-use CrCms\Foundation\Services\ResponseTrait;
-use CrCms\Foundation\Helpers\InstanceConcern;
 use CrCms\Permission\Handlers\Permission\ListHandler;
 use CrCms\Permission\Handlers\Permission\ShowHandler;
 use CrCms\Permission\Handlers\Permission\StoreHandler;
@@ -17,10 +15,8 @@ use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
 use CrCms\Permission\Http\DataProviders\Permission\StoreDataProvider;
 use CrCms\Permission\Http\DataProviders\Permission\UpdateDataProvider;
 
-class PermissionController extends Controller
+class PermissionController extends AbstractController
 {
-    use ResponseTrait, InstanceConcern;
-
     /**
      * @param DataProviderContract $provider
      * @return \Illuminate\Http\JsonResponse
