@@ -2,7 +2,7 @@
 
 namespace CrCms\Permission;
 
-use CrCms\Foundation\Providers\ModuleServiceProvider;
+use CrCms\Foundation\Providers\AbstractModuleServiceProvider;
 use CrCms\Permission\Commands\GetRoutesCommand;
 use CrCms\Permission\Commands\GetTableFieldCommand;
 use CrCms\Permission\Http\Middleware\UserPermissionMiddleware;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 /**
  * Class PermissionServiceProvider.
  */
-class PermissionServiceProvider extends ModuleServiceProvider
+class PermissionServiceProvider extends AbstractModuleServiceProvider implements DeferrableProvider
 {
     /**
      * @var string
