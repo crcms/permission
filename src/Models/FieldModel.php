@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Models;
 
-use CrCms\Foundation\Models\Model;
+use CrCms\Foundation\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FieldModel extends Model
+class FieldModel extends AbstractModel
 {
     use SoftDeletes;
 

@@ -3,10 +3,10 @@
 namespace CrCms\Permission\Models;
 
 use Kalnoy\Nestedset\NodeTrait;
-use CrCms\Foundation\Models\Model;
+use CrCms\Foundation\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MenuModel extends Model
+class MenuModel extends AbstractModel
 {
     use SoftDeletes, NodeTrait;
 

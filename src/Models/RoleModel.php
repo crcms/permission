@@ -2,10 +2,10 @@
 
 namespace CrCms\Permission\Models;
 
-use CrCms\Foundation\Models\Model;
+use CrCms\Foundation\Models\AbstractModel;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class RoleModel extends Model
+class RoleModel extends AbstractModel
 {
     /**
      * @var string
