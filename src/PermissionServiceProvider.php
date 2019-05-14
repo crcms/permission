@@ -65,6 +65,8 @@ class PermissionServiceProvider extends AbstractModuleServiceProvider implements
         return [
             GetRoutesCommand::class,
             GetTableFieldCommand::class,
+            'permission.check',
+            UserPermissionMiddleware::class,
         ];
     }
 
