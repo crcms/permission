@@ -14,7 +14,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
     public function rules(): array
     {
         return [
-            'title' => ['required', 'max:128', 'unique:menus,title'],
+            'title' => ['required', 'max:128'],
             'url' => ['sometimes', 'string', 'max:255'],
             'route' => ['sometimes', 'string', 'max:128'],
             'icon' => ['sometimes', 'string', 'max:255'],
