@@ -6,12 +6,8 @@ use CrCms\Foundation\Providers\AbstractModuleServiceProvider;
 use CrCms\Permission\Commands\GetRoutesCommand;
 use CrCms\Permission\Commands\GetTableFieldCommand;
 use CrCms\Permission\Http\Middleware\UserPermissionMiddleware;
-use Illuminate\Contracts\Support\DeferrableProvider;
 
-/**
- * Class PermissionServiceProvider.
- */
-class PermissionServiceProvider extends AbstractModuleServiceProvider implements DeferrableProvider
+class PermissionServiceProvider extends AbstractModuleServiceProvider
 {
     /**
      * @var string
@@ -22,11 +18,6 @@ class PermissionServiceProvider extends AbstractModuleServiceProvider implements
      * @var string
      */
     protected $name = 'permission';
-
-    /**
-     * @var bool
-     */
-    protected $defer = true;
 
     /**
      * @return void
@@ -55,18 +46,6 @@ class PermissionServiceProvider extends AbstractModuleServiceProvider implements
         $this->mergeDefaultConfig();
 
         $this->registerCommands();
-    }
-
-    /**
-     * @return array
-     */
-    public function provides(): array
-    {
-        return [
-            GetRoutesCommand::class,
-            GetTableFieldCommand::class,
-            UserPermissionMiddleware::class,
-        ];
     }
 
     /**
