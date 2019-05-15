@@ -4,9 +4,9 @@ namespace CrCms\Permission\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use CrCms\Permission\Contracts\UserContract;
 use Illuminate\Contracts\Container\Container;
 use CrCms\Permission\Tasks\ValidateUserPermissionNodesTask;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class UserPermissionMiddleware
@@ -29,9 +29,7 @@ class UserPermissionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = $this->app->make(UserContract::class);
-
-        $boolean = $this->app->make(ValidateUserPermissionNodesTask::class)->handle($user);
+        $boolean = $this->app->make(ValidateUserPermissionNodesTask::class)->handle(Auth::user());
 
         if (! $boolean) {
             throw new AccessDeniedHttpException('暂无权限');
