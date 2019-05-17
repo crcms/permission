@@ -15,13 +15,13 @@ class StoreDataProvider extends AbstractValidateDataProvider
     {
         return [
             'title' => ['required', 'max:128'],
-            'url' => ['sometimes', 'string', 'max:255'],
-            'route' => ['sometimes', 'string', 'max:128'],
-            'icon' => ['sometimes', 'string', 'max:255'],
+            'url' => ['sometimes', 'max:255'],
+            'route' => ['sometimes', 'max:128'],
+            'icon' => ['sometimes', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
             'sort' => ['required', 'integer'],
             'parent_id' => ['present', 'nullable', 'integer'],
-            'remark' => ['sometimes', 'string', 'max:255'],
+            'remark' => ['sometimes', 'max:255'],
         ];
     }
 
