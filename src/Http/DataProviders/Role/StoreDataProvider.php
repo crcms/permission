@@ -17,7 +17,7 @@ class StoreDataProvider extends AbstractValidateDataProvider
             'name' => ['required', 'string', 'max:128', 'unique:roles,name'],
             'remark' => ['sometimes', 'string', 'max:255'],
             'status' => ['required', 'integer', Rule::in(array_keys(CommonConstant::STATUS_LIST))],
-            'super' => ['required', 'integer', Rule::in(array_keys(CommonConstant::SUPER_LIST))],
+            //'super' => ['required', 'integer', Rule::in(array_keys(CommonConstant::SUPER_LIST))],
         ];
     }
 
