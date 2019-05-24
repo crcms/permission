@@ -6,6 +6,7 @@ use CrCms\Permission\Models\RoleModel;
 use CrCms\Foundation\Handlers\AbstractHandler;
 use CrCms\Permission\Repositories\RoleRepository;
 use CrCms\Foundation\Transporters\Contracts\DataProviderContract;
+use CrCms\Permission\Repositories\Constants\CommonConstant;
 
 class UpdateHandler extends AbstractHandler
 {
